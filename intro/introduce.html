@@ -13,7 +13,7 @@
         }
 
         #header {
-            width: 100%;
+            width: 1000px;
             height: 150px;
             /* background-color: antiquewhite; */
             background-color: rgb(250, 250, 250);
@@ -23,7 +23,7 @@
         #sidebar {
             width: 200px;
             height: 777px;
-            background-color: rgb(121, 164, 204);
+            background-color: rgb(166, 206, 243);
             float: left;
             border: 0px solid gray;
             box-sizing: border-box;
@@ -51,7 +51,7 @@
         #footer {
             width: 100%;
             height: 120px;
-            background-color: rgb(207, 207, 207);
+            background-color: rgb(235, 235, 235);
             clear: both;
         }
 
@@ -69,11 +69,11 @@
             /*좌우 중앙*/
             line-height: 100px;
             /*높이와 같으면 딱 높이 중간에 온다*/
-            background-color: chartreuse;
+            background-color: rgb(19, 19, 20);
             /* border-radius: 10px; */
-            border-radius: 50%;
+            border-radius: 10%;
             /*원형으로 만든다*/
-            box-shadow: 2px 2px 15px yellowgreen;
+            box-shadow: 2px 2px 15px rgb(29, 31, 27);
         }
 
 
@@ -161,8 +161,8 @@
     <div id="container">
         <div id="header">
             <!-- 검색창 넣고 메뉴 넣고 -->
-            <a href='#' onclick="alert('안녕!')">
-                <img src="../media/java.jpg" width="1000" height="150">
+            <a href='#' onclick="alert('안녕!')" style="float: right;" >
+                <img src="../media/java.jpg"  height = "145px" >
             </a>
         </div>
 
@@ -281,18 +281,27 @@
 
 
         <!--화면 아래 부분-->
-        <div id="footer" style="padding-top: 20px;">
-            <div class="jghpaddingleft">
+        <div id="footer" style="padding-top: 2px; ">
+            <!-- <div class="jghpaddingleft">
                 <div>전경환쉘더스 주식회사</div>
                 <div class="nav-divide-line"></div>
                 <div>사업자등록번호 : 123-12-123456789012345</div>
                 <div class="nav-divide-line"></div>
                 <div>주소 : 13486 인천광역시 연수구 판교로 227번길 23, 5층</div>
                 <div>COPYRIGHT © 2025 JGH SHIELDUS. ALL RIGHTS RESERVED.</div>
+            </div> -->
+            <div style="font:10px/1.2 sans-serif; float: right;">
+                <img src="https://visitor-badge.laobi.icu/badge?page_id=gatsby6060.introduce.intro" alt="visits"
+                    style="vertical-align:middle;height:12px;">
             </div>
         </div>
 
+
+
     </div>
+
+
+
 </body>
 
 </html>
