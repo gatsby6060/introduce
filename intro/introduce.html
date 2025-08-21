@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #container {
+            width: 1000px;
+            margin: 10px auto;
+            box-sizing: border-box;
+        }
+
+        #header {
+            width: 100%;
+            height: 150px;
+            /* background-color: antiquewhite; */
+            background-color: rgb(250, 250, 250);
+            box-sizing: border-box;
+        }
+
+        #sidebar {
+            width: 200px;
+            height: 777px;
+            background-color: rgb(121, 164, 204);
+            float: left;
+            border: 0px solid gray;
+            box-sizing: border-box;
+            /*내부에서 1px이상 늘어놔도 총 700px 300px는 결국 맞춰준다.*/
+        }
+
+        #contents {
+            width: 700px;
+            height: 777px;
+            background-color: rgb(240, 240, 240);
+            float: left;
+            box-sizing: border-box;
+        }
+
+        #rightside {
+            width: 100px;
+            height: 777px;
+            background-color: rgb(250, 250, 250);
+            float: left;
+            /* border : 1px solid gray; */
+            box-sizing: border-box;
+            /*내부에서 1px이상 늘어놔도 총 700px 300px는 결국 맞춰준다.*/
+        }
+
+        #footer {
+            width: 100%;
+            height: 120px;
+            background-color: rgb(207, 207, 207);
+            clear: both;
+        }
+
+
+
+
+        .box2 {
+            /* 바깥쪽 여백은 margin이라는 속성을 사용 */
+            margin-top: 10px;
+            margin-left: 10px;
+            width: 170px;
+            height: 170px;
+            border: 0px solid gray;
+            text-align: center;
+            /*좌우 중앙*/
+            line-height: 100px;
+            /*높이와 같으면 딱 높이 중간에 온다*/
+            background-color: chartreuse;
+            /* border-radius: 10px; */
+            border-radius: 50%;
+            /*원형으로 만든다*/
+            box-shadow: 2px 2px 15px yellowgreen;
+        }
+
+
+
+        table,
+        tr,
+        td,
+        th {
+            border: 1px solid rgb(171, 171, 171);
+            /*2px 크기 검은색 선(solid)로 (dotted은 점선) */
+            border-collapse: collapse;
+            /*겹치는 선 하나로*/
+            text-align: center;
+            /*가운데 정렬*/
+            padding: 5px 20px;
+            /*안쪽 여백 상하5px 좌우20px*/
+        }
+
+
+
+        .jghtextcenter {
+            text-align: center;
+            /*가운데 정렬*/
+        }
+
+        .jghtextbold {
+            font-weight: bold;
+            /*가운데 정렬*/
+        }
+
+        .jghmarginleft {
+            margin-left: 18px;
+            /*왼쪽 정렬*/
+        }
+
+        .jghpaddingleft {
+            padding-left: 40px;
+            /*왼쪽 정렬*/
+        }
+
+        .subtitle {
+            /* 특별히 넣은건 없음 그냥 이미 코드에 있길래 적어만 둠 */
+        }
+
+
+
+        /* 클릭관련된 -------------------------------S */
+        a {
+            color: green;
+            /*최초색*/
+            text-decoration: nones;
+        }
+
+        /*마우스 올렸을 때 파란색       다른 태그에서도사용가능*/
+        a:hover {
+            color: blue;
+            text-decoration: underline;
+        }
+
+        /* link => 방문하지 않은 링크에 스타일 부여 */
+        a:link {
+            color: red;
+        }
+
+        /* visited => 방문한 링크에 스타일 부여*/
+        a:visited {
+            color: purple
+        }
+
+        /* active => 클릭하는 순간 스타일 부여*/
+        a:active {
+            color: yellowgreen
+        }
+
+        /* focus => 포커스를 받을 때 스타일 부여*/
+        a:focus {
+            color: orange
+        }
+
+        /* 클릭관련된 -------------------------------E */
+    </style>
+</head>
+
+<body>
+    <div id="container">
+        <div id="header">
+            <!-- 검색창 넣고 메뉴 넣고 -->
+            <a href='#' onclick="alert('안녕!')">
+                <img src="../media/java.jpg" width="1000" height="150">
+            </a>
+        </div>
+
+        <div id="sidebar">
+            <div>
+                <img class="box2" src="../media/skj_img.jpg" width="270" height="400">
+            </div>
+            <br>
+            <div class="jghtextcenter"><span style="font-weight: bold; font-size: 18px;">Jeon GyeongHwan</span></div>
+            <br>
+            <div class="jghmarginleft">프로그래밍 재밌다</div>
+            <br>
+            <div class="jghmarginleft">Incheon, Korea</div>
+            <br>
+            <div class="jghmarginleft">test@naver.com</div>
+            <br>
+            <div class="jghmarginleft jghtextbold">SNS</div>
+            <br>
+            <div class="jghmarginleft jghtextbold">
+                <a href="https://www.naver.com" target="_blank">클릭</a>
+            </div>
+
+        </div>
+
+
+
+
+        <div id="contents" class="jghpaddingleft">
+            <section>
+                <h2 class="subtitle">자기소개</h2>
+                <p>저는 <mark><span style="color: red; font-weight: bold;">프로그래밍</span></mark>에 관심이 많습니다. <br>현재 열심히 공부하며
+                    코딩 중!</p>
+            </section>
+
+            <!-- 경력 -->
+            <section>
+                <h2 class="subtitle">Experience</h2>
+                <ul>
+                    <li>프론트엔드
+                        <ul>
+                            <li>HTML/CSS/JAVASCRIPT </li>
+                            <li>웹 페이지 잘 만든다 </li>
+                            <li>다 잘함</li>
+                        </ul>
+                    </li>
+                    <li>백엔드
+                        <ul>
+                            <li>자바 잘함 </li>
+                            <li>오라클 더 잘함</li>
+                        </ul>
+                    </li>
+                </ul>
+            </section>
+
+            <!-- 숙련도 -->
+            <section>
+                <h2 class="subtitle">보유 기술</h2>
+                <li style="list-style: none;">
+                    <ul>
+                        <li>자바 </li>
+                        <li>오라클</li>
+                    </ul>
+                </li>
+            </section>
+
+            <!-- 학력 -->
+            <section>
+                <h2 class="subtitle">Education</h2>
+                <table>
+                    <caption><span style="color: red; font-weight: bold;">학력 사항</span></caption>
+                    <thead>
+                        <tr>
+                            <th>출신학교</th>
+                            <th>전공</th>
+                            <th>기간</th>
+                            <th>구분</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>좋은대학교</td>
+                            <td>좋은학과</td>
+                            <td>2010.3 ~ 2013.2</td>
+                            <td>졸업</td>
+                        </tr>
+                        <tr>
+                            <td>꽤좋은고등학교</td>
+                            <td> - </td>
+                            <td>2007.3 ~ 2009.2</td>
+                            <td>졸업</td>
+                        </tr>
+                        <tr>
+                            <td>꽤좋은중학교</td>
+                            <td> - </td>
+                            <td>2007.3 ~ 2009.2</td>
+                            <td>졸업</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+        </div><!--컨텐츠 끝-->
+
+
+
+
+
+
+
+        <div id="rightside">
+            <!-- 라이트 사이드 내용 넣고 등등 -->
+        </div>
+
+
+
+
+
+
+        <!--화면 아래 부분-->
+        <div id="footer" style="padding-top: 20px;">
+            <div class="jghpaddingleft">
+                <div>전경환쉘더스 주식회사</div>
+                <div class="nav-divide-line"></div>
+                <div>사업자등록번호 : 123-12-123456789012345</div>
+                <div class="nav-divide-line"></div>
+                <div>주소 : 13486 인천광역시 연수구 판교로 227번길 23, 5층</div>
+                <div>COPYRIGHT © 2025 JGH SHIELDUS. ALL RIGHTS RESERVED.</div>
+            </div>
+        </div>
+
+    </div>
+</body>
+
+</html>
