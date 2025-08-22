@@ -6,6 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
+        body {
+            /*fixed는 스크롤 내려도 이미지는 고정*/
+            background: url("../media/img2_2.jpg") no-repeat fixed;
+            background-size: cover;
+        }
+
+       
+
         #container {
             width: 1000px;
             margin: 10px auto;
@@ -15,7 +23,7 @@
         #header {
             width: 1000px;
             height: 150px;
-            /* background-color: antiquewhite; */
+            background-color: antiquewhite;
             background-color: rgb(250, 250, 250);
             box-sizing: border-box;
         }
@@ -154,15 +162,81 @@
         }
 
         /* 클릭관련된 -------------------------------E */
+
+
+
+         @media screen and (max-width : 1400px) {
+            body {
+                background: url("../media/img1_1.jpg") no-repeat fixed;
+                background-size: cover;
+            }
+        }
+
+        @media screen and (max-width : 700px) {
+            body {
+                background: url("../media/img4.jpg") no-repeat fixed;
+                background-size: cover;
+
+                
+            }
+            #header {
+                width: 500px;
+                /* margin: 50px auto; */
+            }
+
+            #container {
+                width: 500px;
+                /* margin: 50px auto; */
+            }
+
+            #contents {
+                width: 500px;
+                height: 1000px;
+                /* margin: 5px 5px 0px 5px; */
+                padding: 0px 15px 0px 15px;;
+            }
+
+            #sidebar {
+                width: 500px;
+                height: 500px;
+                /* margin: 50px auto; */
+            }
+
+            #rightside {
+                width: 500px;
+                height: 10px;
+                /* margin: 50px auto; */
+            }
+            #footer{
+                width: 500px;
+                height: 20px;
+            }
+
+            .jghmarginleft {
+                text-align: center;
+            }
+
+            .box2 {
+                    display: block;
+                    margin: 20px auto 0px auto;
+                /* position: absolute;
+                left: 50px;
+                top: 350px;
+                text-align: center;
+                width: 200px; */
+            }
+        }
     </style>
 </head>
 
 <body>
     <div id="container">
+
         <div id="header">
             <!-- 검색창 넣고 메뉴 넣고 -->
-            <a href='#' onclick="alert('안녕!')" style="float: right;" >
-                <img src="../media/java.jpg"  height = "145px" >
+            <a href='#' onclick="alert('안녕!')" style="float: right;">
+                <img src="../media/java.jpg" height="145px">
+                <img src="../media/htmlbook.jpg" height="145px">
             </a>
         </div>
 
@@ -193,8 +267,10 @@
         <div id="contents" class="jghpaddingleft">
             <section>
                 <h2 class="subtitle">자기소개</h2>
-                <p>저는 <mark><span style="color: red; font-weight: bold;">프로그래밍</span></mark>에 관심이 많습니다. <br>현재 열심히 공부하며
-                    코딩 중!</p>
+                <p>저는 <mark><span style="color: red; font-weight: bold;">프로그래밍</span></mark>에 관심이 많습니다. <br>
+                    현재 열심히 공부하며 코딩 중!
+                    그래픽카드 5060ti 16g를 좋아합니다.
+                </p>
             </section>
 
             <!-- 경력 -->
@@ -281,7 +357,7 @@
 
 
         <!--화면 아래 부분-->
-        
+
         <div id="footer" style="padding-top: 2px; ">
             <!-- <div class="jghpaddingleft">
                 <div>전경환쉘더스 주식회사</div>
