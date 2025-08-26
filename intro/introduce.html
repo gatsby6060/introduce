@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
     <title>Document</title>
     <style>
         body {
@@ -12,7 +13,7 @@
             background-size: cover;
         }
 
-       
+
 
         #container {
             width: 1000px;
@@ -168,7 +169,7 @@
 
 
 
-         @media screen and (max-width : 1500px) {
+        @media screen and (max-width : 1500px) {
             body {
                 background: url("../media/img1_1.jpg") no-repeat fixed;
                 background-size: cover;
@@ -180,8 +181,9 @@
                 background: url("../media/img4.jpg") no-repeat fixed;
                 background-size: cover;
 
-                
+
             }
+
             #header {
                 width: 400px;
                 /* margin: 50px auto; */
@@ -196,12 +198,13 @@
                 width: 400px;
                 height: 1000px;
                 /* margin: 5px 5px 0px 5px; */
-                padding: 0px 15px 0px 15px;;
+                padding: 0px 15px 0px 15px;
+                ;
             }
 
             #sidebar {
                 width: 400px;
-                height: 400px;
+                height: 550px;
                 /* margin: 50px auto; */
             }
 
@@ -212,8 +215,8 @@
                 /* margin: 50px auto; */
             }
 
-            
-            #footer{
+
+            #footer {
                 width: 400px;
                 height: 20px;
                 background: linear-gradient(to bottom, rgb(250, 250, 250), white);
@@ -224,8 +227,8 @@
             }
 
             .box2 {
-                    display: block;
-                    margin: 20px auto 0px auto;
+                display: block;
+                margin: 20px auto 0px auto;
                 /* position: absolute;
                 left: 50px;
                 top: 350px;
@@ -233,14 +236,49 @@
                 width: 200px; */
             }
         }
+
+
+
+
+
+        /*라이트모드 다크모드 관련 --------S*/
+                .light-mode {
+            background-color: white;
+            color: black;
+        }
+
+        .dark-mode {
+            background-color: #333;
+            color: white;
+        }
+
+        #light, #dark {
+            cursor: pointer;
+        }
+        /* #dark {
+            cursor: pointer;
+        } */
+         /*라이트 모드일때 dark가 안보이게...*/
+         .light-mode #dark{ 
+            display: none;
+         }
+        /*다크 모드일때 light가 안보이게...*/
+         .dark-mode #light{ 
+            display: none;
+         }
+
+        /*라이트모드 다크모드 관련 --------E*/
     </style>
 </head>
 
-<body>
+<body class="light-mode">
     <div id="container">
 
         <div id="header">
-            <!-- 검색창 넣고 메뉴 넣고 -->
+            <!-- 검색창 넣고 메뉴 넣고 예정-->
+            <span id="light" onclick="fnMode()" class="material-symbols-outlined">light_mode</span>
+            <span id="dark" onclick="fnMode()" class="material-symbols-outlined">dark_mode</span>
+
             <a href='#' onclick="alert('안녕!')" style="float: right;">
                 <img src="../media/java.jpg" height="145px">
                 <img src="../media/htmlbook.jpg" height="145px">
@@ -259,6 +297,12 @@
             <div class="jghmarginleft">Incheon, Korea</div>
             <br>
             <div class="jghmarginleft">test@naver.com</div>
+            <br>
+            <div class="jghmarginleft">
+                <span class="material-symbols-outlined" style="font-size: 40px; cursor: pointer;">
+                    phone_enabled
+                </span>
+            </div>
             <br>
             <div class="jghmarginleft jghtextbold">SNS</div>
             <br>
@@ -357,7 +401,7 @@
         <div id="rightside">
             <div class="jghtextcenter" style="margin-top: 5px;">현재시간</div>
             <!-- 라이트 사이드 내용 넣고 등등 -->
-             <div class="time jghtextcenter"></div>
+            <div class="time jghtextcenter"></div>
         </div>
 
 
@@ -397,7 +441,15 @@
         let datetime = new Date();
         let obj = document.querySelector(".time");
         let time = datetime.getHours() + " : " + datetime.getMinutes() + " : "
-                    + datetime.getSeconds();
+            + datetime.getSeconds();
         obj.innerHTML = time; //datetime;
     }, 1000);
+
+    function fnMode() {
+        let body = document.body;
+        body.classList.toggle("light-mode");/*여러개가 가능하서 classList라는 이름사용*/
+        /*토글함수는... 있으면 없애고  없으면 만들어버림*/
+        body.classList.toggle("dark-mode");
+        let icon = document.querySelector("#mode");
+    }
 </script>
