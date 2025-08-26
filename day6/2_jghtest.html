@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div><span class="accent"></span>
+        <div><label><input onclick="fnbk()" type="radio" name="books" value="java">자바</label></div>
+        <div><label><input onclick="fnbk()" type="radio" name="books" value="oracle">오라클</label></div>
+        <div><label><input onclick="fnbk()" type="radio" name="books" value="html">html/css/javascript</label></div>
+        <div><label><input onclick="fnbk()" type="radio" name="books" value="jQuery">jQuery</label></div>
+    </div>
+
+    <div class="image">
+        <!-- <img src="../media/java.jpg" height="500px"> -->
+    </div>
+</body>
+
+</html>
+
+<script>
+    let imgobj = document.querySelector(".image");
+    function fnbk() {
+
+        let book = document.querySelector("input[name='books']:checked");
+        if (book.value == "java") {
+            // alert("java입니다.");
+            imgobj.innerHTML = `<img src="../media/java.jpg" height="500px">`;
+        } else if (book.value == "oracle") {
+            // alert("oracle입니다.");
+            imgobj.innerHTML = `<img src="../media/oracle.jpg" height="500px">`;
+        } else if (book.value == "html") {
+            // alert("html 입니다.")
+            imgobj.innerHTML = `<img src="../media/html.jpg" height="500px">`;
+        } else if (book.value == "jQuery") {
+            // alert("jQuery입니다.")
+            imgobj.innerHTML = `<img src="../media/jQuery.jpg" height="500px">`;
+        }
+    }
+</script>

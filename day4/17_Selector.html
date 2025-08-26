@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 선택자 */
+        div {
+            color: blue;
+        }
+
+        .txt {
+            font-weight: bold;
+        }
+
+        div, span{/*div, span 위치 상관 없이 모두 적용하는 것이다.*/
+            background-color: beige;
+        }
+        div span{/*div 밑에는 모든 자식이든 증손자든 span에게만! 적용하겠다.*/
+            font-size: 30px;
+        }
+        div > span { /* div안에 있는 자식span한테만 적용*/ /* >는 선택자 */
+                    /* 손자뻘 태그(div->a->span)에는 적용 안됨*/
+            font-style: italic;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="txt">
+        <a><span>HTML</span></a>
+    </div>
+    <div class="txt">
+        <p>CSS</p>
+        <span>Javascript</span>
+    </div>
+    <span>JQuery</span>
+</body>
+
+</html>

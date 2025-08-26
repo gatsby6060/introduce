@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table, tr, td, th {
+            border : 2px solid black; /*2px 크기 검은색 선(solid)로 (dotted은 점선) */
+            border-collapse: collapse; /*겹치는 선 하나로*/
+            text-align: center; /*가운데 정렬*/
+            padding: 5px 20px; /*안쪽 여백 상하5px 좌우20px*/
+        }
+    </style>
+</head>
+<body>
+    <table>
+        <tr>
+            <th colspan="2">숫자1</th>
+            <th>숫자2</th>
+            <th>숫자3</th>
+            <!-- <th>숫자4</th> -->
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>2</td>
+            <td rowspan="3">3</td>
+            <td>4</td>
+        </tr>
+        <tr>
+            <td colspan="2">5</td> <!--col은 왼쪽으로 한칸 넓어짐-->
+            <td rowspan="2">7</td>
+            <!--<td rowspan="2">7</td> row는 아래쪽으로 한칸 넓어짐-->
+            <!-- <th>8</th> -->
+        </tr>
+        <tr>
+            <td>8</td>
+            <td>9</td>
+            <!-- <td>10</td> -->
+            <!-- <td>11</td> -->
+        </tr>        
+    </table>
+
+</body>
+</html>

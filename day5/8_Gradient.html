@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            width: 600px;
+            height: 400px;
+        }
+        .grad1{
+            /*반복 그라데이션*/
+            background: repeating-linear-gradient(yellowgreen, green 20px) ;
+            /*시작은 엘로그린 마지막은 그린으로(20px동안...)*/
+        }
+        .grad2{
+            /*반복 원형 그라데이션*//*10%로 줘서 총10번씩 반복되었음*/
+            background: repeating-radial-gradient(yellowgreen, green 10%) ;
+            /*시작은 엘로그린 마지막은 그린으로(20px동안...)*/
+        }
+    </style>
+</head>
+<body>
+    <div class="grad1"></div>
+    <div class="grad2"></div>
+</body>
+</html>

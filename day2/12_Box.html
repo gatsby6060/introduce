@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            /* 바깥쪽 여백은 margin이라는 속성을 사용 */
+            /* top, bottom, left, right 개별로 적용 가능*/
+            /* 한번에 4개, 2개씩 적용도 가능하다. */
+
+            /* 1번 방법 */
+            margin-top : 10px;
+            margin-right : 10px;
+            margin-bottom : 10px;
+            margin-left : 10px;
+
+            /* 2번 방법 */
+            margin-top : 10px 10px 10px 10px; /*top부터 시계방향*/
+
+            /* 3번 방법 */
+            margin : 10px 10px; /*첫번째: top, bottom       두번째 레프트 라이트*/
+
+            /* 4번 방법 */
+            margin : 10px; /*모두 10px*/
+
+            /*padding(안쪽여백)도 같은 방법*/
+
+        }
+        .box1{
+            width: 100px; /* 너비 */
+            height: 100px; /* 높이 */
+            border : 2px solid gray;
+            /* border는 한번에 3개의 값을 주는 게 가능 *//*border는 '선 긋는 속성'*/
+            /* border-width: 2px; 
+            border-style: solid;
+            border-color: gray; */
+            text-align: center;
+            line-height: 100px; /*높이와 같으면 딱 중간에 온다*/
+            background-color: aqua;
+        }
+        .box2{
+            /* 바깥쪽 여백은 margin이라는 속성을 사용 */
+            margin-top : 10px;
+            margin-left : 10px;
+            width: 100px; 
+            height: 100px; 
+            border: 2px dashed gray ;
+            text-align: center; /*좌우 중앙*/
+            line-height:  100px; /*높이와 같으면 딱 높이 중간에 온다*/
+            background-color: chartreuse;
+            /* border-radius: 10px; */
+            border-radius: 50%; /*원형으로 만든다*/
+            box-shadow: 2px 2px 15px yellowgreen;
+        }
+        /*패딩, 안쪽여백, 정의방법은 맨위 margin참고*/
+        .pd{
+            padding : 20px 30px 5px 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class ="box1 pd">box1</div>
+    <div class ="box2">box2</div>
+</body>
+</html>

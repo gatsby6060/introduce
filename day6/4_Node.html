@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>과목 목록</h1>
+    <h3 id="js">자바스크립트</h3>
+    <hr>
+    <div id="list">
+        <p id="java">자바</p>
+        <p id="oracle" style="color: red;">오라클</p>
+        <p id="html">html</p>
+    </div>
+    <hr>
+    <button onclick="fnAppend()">appendChild</button><!-- 어팬드는 자식요소 맨뒤에 이어 붙이는거... -->
+    <button onclick="fnBefore()">insertBefore</button><!-- 선택한 노드 이젠에 넣기-->
+    <button onclick="fnCreateNode()">createElement</button><!-- 태그 만들기 -->
+    <button onclick="fnCreateAttr()">createAttribute</button><!--속성만들기-->
+    <button onclick="fnRemoveNode()">removeChild</button><!--자식노드제거-->
+    <button onclick="fnRemoveAttr()">removeAttribute</button><!--자식노드제거-->
+    <button onclick="fnCloneNode()">cloneNode</button><!-- 노드 복사 -->
+</body>
+
+</html>
+<script>
+    function fnAppend() {
+        let list = document.querySelector("#list");
+        // let js = document.querySelector("#js");
+        let js = document.getElementById("js");
+        list.appendChild(js);
+    }
+
+    function fnBefore() {
+        let list = document.querySelector("#list");
+        let js = document.getElementById("js");
+        let html = document.querySelector("#html");
+        list.insertBefore(js, html); // html이전에 js를 넣겠다
+    }
+    function fnCreateNode() {
+        let list = document.querySelector("#list");
+        let flutter = document.createElement("p");//<p></p>
+        flutter.innerHTML = "flutter"; //<p>flutter</p>
+        list.appendChild(flutter);
+    }
+    function fnCreateAttr() {
+        let list = document.querySelector("#list");
+        let flutter = document.createElement("p");//<p></p>
+        flutter.innerHTML = "flutter"; //<p>flutter</p>
+        let style = document.createAttribute("style");
+        style.value = "color : blue; font-size : 30px; font-weight : bold";
+        flutter.setAttributeNode(style);  //<p style="">flutter</p>
+        //<p style="color : blue; font-size : 30px; font-weight : bold">flutter</p>
+
+        list.appendChild(flutter);
+    }
+    function fnRemoveNode() {
+        let list = document.querySelector("#list");
+        let oracle = document.querySelector("#oracle");
+        list.removeChild(oracle);
+    }
+    function fnRemoveAttr() {
+        let oracle = document.querySelector("#oracle");
+        oracle.removeAttribute("style");
+    }
+    function fnCloneNode() {
+        let list = document.querySelector("#list");
+        let js = document.querySelector("#js");
+        // let cloneJs = js.cloneNode(true);
+        list.appendChild(js.cloneNode(true)); //제일 뒤로 복사본이 붙는듯  fnCloneNode
+    }
+</script>

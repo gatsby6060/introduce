@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box{
+            width: 300px;
+            height: 300px;
+            border: 1px solid black;
+            margin : 10px;
+            background-image: url("../media/img2.jpg");
+            background-repeat: no-repeat;
+        }
+    </style>
+</head>
+<body>
+    <div class="box" style="background-size: contain;"></div> <!--비율은 맞춰주면서 키워줌 대신 한쪽이 꽉차면 그순간 멈춤-->
+    <div class="box" style="background-size: cover;"></div><!--커버는 걍 늘려놓고 봄 , 비율이 한쪽이 짤릴수 있음-->
+    <div class="box" style="background-size: 300px;"></div><!-- 비율을 맞춰서 맞춘 숫자로 강제-->
+</body>
+</html>

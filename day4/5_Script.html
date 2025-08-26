@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+<script>
+    // alert => 알림 창
+    // alert("Hello Javascript!!");
+    // confirm => 확인 창(확인, 취소)
+    // confirm("정말 삭제하시겠습니까?"); /* true or false 리턴 */
+
+    // 자바스크립트는 자바처럼 변수 선언 시 문자, 정수, 실수, 불린 등 상세히 구분하지 않음
+    // var, let에 다 담으면 된다.
+    // var, let은 숫자, 문자, 배열, 불린, 객체, 함수 등 모든게 담긴다.
+    // 상수는 const
+
+    let a = 10;
+    let b = 10.5;
+    let c = true;
+    let d = "ㅋㅋㅋ";
+    let e = [1, 2, 3, 4];
+    let f = { "name": "길동이", "age": 30 };
+    let g = new Date();
+    a = "홍길동!!!!";
+    let h = function () { alert("안녕?") }
+
+    console.log(a);
+
+    // let flg = confirm("정말 삭제하시겠습니까?"); //true나 false리턴됨
+    // if(flg){
+    //     alert("삭제되었습니다.");
+    // }else{
+    //     alert("취소되었습니다.");
+    // }
+
+    //prompt는 거의 안씀. 그냥 참고로 알아둘 것 (입력한 값을 받음)
+    // let name = prompt("이름을 입력해주세요.");
+    // console.log(name + "님 환영합니다.");
+    // document.write(name + "님 환영합니다");
+
+    for (let i = 0; i < 10; i++) {
+        document.write("<h2 style = 'color : red'>"+ i +"</h2>");
+    }
+
+</script>

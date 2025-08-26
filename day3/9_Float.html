@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+            border: 1px solid black;
+            text-align: center;
+            line-height: 100px;
+            box-sizing: border-box;
+            /*border등을 포함해서 전체크기를 width height에 맞게 하는 개념 안쪽을 줄여버림*/
+            color: aliceblue;
+            margin: 5px;
+        }
+
+
+
+        .box1 {
+            background-color: red;
+            float: left;
+            margin: 10px;
+        }
+
+        .box2 {
+            background-color: blue;
+            float: left;
+            margin: 10px;
+        }
+
+        .box3 {
+            background-color: green;
+            float: right;
+            margin: 10px;
+        }
+
+        .line {
+            width: 800px; 
+            height: 30px;
+            background-color: purple;
+            /* margin: 10px; */
+            /* clear: both; */
+             
+            /*이제부터 float를 무시하고 아래부터 기본동작으로 쌓인다*/
+        }
+
+        .box5 {
+           background-color: saddlebrown;
+           clear: both;
+           margin: 10px;
+            /*이제부터 float를 무시하고 아래부터 기본동작으로 쌓인다*/
+        }
+    </style>
+</head>
+
+<body>
+    
+    <div class="box1">box1</div>
+    <div class="box2">box2</div>
+    <div class="box3">box3</div>
+    <div class="line">box4</div>
+    <div class="box5">box5</div>
+    
+    
+</body>
+
+</html>

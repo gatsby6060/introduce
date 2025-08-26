@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #container{
+            /* width: 800px; */
+            display: flex;
+            justify-content: row;
+            background-color: #ccc;
+            border: 2px solid black;
+        }
+        .box{
+            width: 100px;
+            margin : 5px;
+            padding: 10px 20px;
+            background-color: green;
+            color: white;
+            text-align: center;
+        }
+        .wrap1{
+            /* 디폴트. 한 줄에 표시 */
+            flex-wrap: nowrap;
+        }
+        .wrap2{
+            /* 여러 줄에 표시 */
+            flex-wrap: wrap;
+        }
+        .wrap3{
+            /* 여러 줄에 표시(거꾸로) */
+            flex-wrap: wrap-reverse;
+        }
+    </style>
+</head>
+<body>
+    <div id="container" class="wrap2">
+        <div class="box">1</div>
+        <div class="box">2</div>
+        <div class="box">3</div>
+        <div class="box">4</div>
+        <div class="box">5</div>    
+        <div class="box">6</div>    
+    </div>
+</body>
+</html>

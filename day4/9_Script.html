@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!--내가 입력한 숫자가 짝수인지 홀수인지-->
+    <div>
+        숫자입력: <input type="text" id="num">
+    </div>
+    <div>
+        <button onclick="fnEvenAndOdd()">판별</button>
+    </div>
+</body>
+
+</html>
+
+<script>
+    function fnEvenAndOdd() {
+        let num = document.querySelector("#num").value;
+        if (num % 2 == 0) {
+            alert("짝수");
+        }
+        else {
+            alert("홀수");
+        }
+    }
+</script>

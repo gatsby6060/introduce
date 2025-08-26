@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            background-color: rgb(182, 238, 72);
+            width: 100px;
+            height: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box" id="box1"></div>
+    <span>test zz</span>
+    <div class="box" id="box2"></div>
+    <p>Hello Html</p>
+    <div class="box" id="box3"></div>
+    <button onclick="fnChange()">box 색 변경</button>
+</body>
+
+</html>
+<script>
+    function fnChange() {
+        let objList = document.querySelectorAll(".box");//2개이상객체?는 All로 가져옴
+        // let r = Math.floor(Math.random() * 256); //0~255 의랜덤한 정수
+        // let g = Math.floor(Math.random() * 256); //0~255 의랜덤한 정수
+        // let b = Math.floor(Math.random() * 256); //0~255 의랜덤한 정수
+        // console.log(num);
+
+        for (let i = 0; i < objList.length; i++) {
+            console.log(objList[i]);
+            let r = Math.floor(Math.random() * 256); //0~255 의랜덤한 정수
+            let g = Math.floor(Math.random() * 256); //0~255 의랜덤한 정수
+            let b = Math.floor(Math.random() * 256); //0~255 의랜덤한 정수
+            objList[i].style.backgroundColor = `rgb(${r},${g},${b})`;
+        }
+    }
+</script>

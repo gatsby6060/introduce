@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 200px;
+            height: 200px;
+            background-color: blue;
+            color: aliceblue;
+        }
+        div{
+            display:block;/*div의 기본은 block*/
+        }
+        span{
+            display:inline /*span 기본은 inline*/
+        }
+
+        .box2 {
+            width: 200px;
+            height: 200px;
+            background-color: blue;
+            color: aliceblue;
+            display: inline-block;
+        }
+    </style>
+
+</head>
+
+<body>
+    <!-- inline => 내부의 크기 만큼만 범위 차지 -->
+    <!-- block => 한줄 한라인을 다 차지 + 너비와 높이 지정 가능 -->
+    <div class="box">box1</div> <!--div같은 block속성의 태그는 한줄 자체를 차지하면서 클래스만큼 색상을 준다-->
+    <div class="box" style="background-color: red;">box1</div>
+    <br>
+    <span class="box">box2</span>
+    <span class="box">box3</span>
+
+    <br><br>
+    <hr>
+    <!-- inline-block 속성은 block처럼 크기를 지정하면서 -->
+    <!-- inline처럼 나란히 배열하는게 가능한 속성 -->
+    <div class="box2">box5</div>
+    <div class="box2" style="background-color: red;">box6</div>
+</body>
+
+</html>

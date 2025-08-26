@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div><span class="accent"></span>
+        <div><label><input onclick="fnSubject()" type="radio" name="subject" value="java">자바</label></div>
+        <div><label><input onclick="fnSubject()" type="radio" name="subject" value="oracle">오라클</label></div>
+        <div><label><input onclick="fnSubject()" type="radio" name="subject" value="html">html/css/javascript</label>
+        </div>
+        <div><label><input onclick="fnSubject()" type="radio" name="subject" value="jquery">jQuery</label></div>
+    </div>
+
+    <!-- <div class="image"> -->
+    <img src="" id="image" width="300px" height="300px" style="display: none;">
+    <!-- </div> -->
+</body>
+
+</html>
+
+<script>
+    // let imgobj = document.querySelector(".image");
+    function fnSubject() {
+
+        let subject = document.querySelector("input[name='subject']:checked").value;
+        let img = document.querySelector("#image");
+        img.style.display = "inline";
+        img.src = "../media/" + subject + ".jpg";
+
+        // if (subject == "java") {
+        //     img.src = "../media/java.jpg";
+        // } else if (subject == "oracle") {
+        //     img.src = "../media/oracle.jpg";
+        // } else if (subject == "html") {
+        //     img.src = "../media/html.jpg";
+        // } else if (subject == "jquery") {
+        //     img.src = "../media/jquery.jpg";
+        // }
+    }
+</script>

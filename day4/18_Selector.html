@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div+p {
+            /*div태그 다음에 오는 첫번째 p태그에 스타일 적용(자식x,형제o)*/
+            color: red;
+        }
+        div~p { /* div태그 다음에 오는 모든 p태그에 적용(자식x, 형제o)*/
+            background-color: rgb(124, 210, 210);
+        }
+        a[href]{ /* a태그 중에서 href속성을 가진 태그한테만 적용*/
+            font-style: italic;
+        }
+    </style>
+</head>
+
+<body>
+    <div> #과목 목록 </div>
+    <p> 자바 </p>
+    <p> <a>오라클</a> </p>
+    <p> <a href="#">HTML</a> </p>
+    <div>
+        <p>Javascript</p>
+    </div>
+</body>
+
+</html>

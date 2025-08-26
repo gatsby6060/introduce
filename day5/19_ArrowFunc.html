@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+<script>
+    let sum1 = function sum(x, y) {
+        console.log(x + y);
+    }
+    sum1(1,2); //메소드 자체가 담긴상태(결과값이 아님)
+
+    let sum2 = function(x,y){
+        console.log(x+y);
+    }
+    sum2(1,2);
+
+    let sum3 = (x,y) => {
+        console.log(x+y);
+    }
+    sum3(1,2);
+
+</script>

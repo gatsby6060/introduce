@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1 style="color:red" onclick="fnColor()" id="txt">HTML/CSS 재밌다!</h1>
+</body>
+
+</html>
+
+<script>
+    function fnColor() {
+        let obj = document.querySelector("#txt");
+        console.log(obj.style.color);
+        // obj.style.color = "blue"; // 이러면 클릭시 화면의 색도 바꿔버린다.
+        // obj.innerHTML="zzzzz"; //이러면 클릭시 화면의 글자 값을 바꿔버린다.
+        if (obj.style.color == "red") {
+            obj.style.color = "blue"
+            obj.style.fontSize = "10px";
+        }
+        else {
+            obj.style.color = "red" //css에서의 -는 카멜표기법으로 바꿔서 넣는다.
+            
+        }
+    }
+</script>

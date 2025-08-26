@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <img id="image" src = "../media/img2.jpg" width="300" height="300">
+</body>
+</html>
+<script>
+    let img = document.querySelector("#image");
+    img.addEventListener("mouseover", ()=>{
+        img.src = "../media/img3.jpg"
+    });
+    img.addEventListener("mouseout", ()=>{
+        img.src = "../media/img2.jpg"
+    });    
+    // 이벤트 종류
+    // mouseover, mouseout
+    //  click => 마우스 클릭 했을때
+    // dbclick => 더블 클릭 했을때
+    // mousedown => 마우스 누르고 있을 때
+    // mousetup => 마우스 땟을때 ? t가 들어가는데 맞나?.....
+    // mousemove => 마우스 움직일때
+</script>

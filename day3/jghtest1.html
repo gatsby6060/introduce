@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #container {
+            width: 800px;
+            margin: 20px auto;
+        }
+
+        .title {
+            width: 500px;
+            background-color: white;
+            color: black;
+            /*글자색*/
+            padding: 15px 0px;
+            text-align: center;
+            /*좌우 중앙*/
+            font-weight: bold;
+            font-size: 30px;
+            /* 텍스트크기 픽셀단위 */
+        }
+
+        .box2 {
+            /* 바깥쪽 여백은 margin이라는 속성을 사용 */
+            margin-top: 20px;
+            /* margin-left : 10px; */
+            width: 500px;
+            height: 800px;
+            border: 1px solid rgb(221, 221, 221);
+            text-align: center;
+            /*좌우 중앙*/
+            /*line-height:  100px; 높이와 같으면 딱 높이 중간에 온다 */
+            background-color: white;
+            /* border-radius: 10px; */
+            /* border-radius: 1%; */
+            /*원형으로 만든다*/
+            /* box-shadow: 5px 5px 20px gray; */
+        }
+
+        table,
+        tr,
+        td {
+            border: 1px solid gray;
+            /*2px 크기 검은색 선(solid)로 (dotted은 점선) */
+            border-collapse: collapse;
+            /*겹치는 선 하나로*/
+            text-align: left;
+            /*왼쪽 정렬*/
+            padding: 5px 20px;
+            /*안쪽 여백 상하5px 좌우20px*/
+        }
+
+        table {
+            width: 760px;
+        }
+
+        th {
+            border: 1px solid gray;
+            /*2px 크기 검은색 선(solid)로 (dotted은 점선) */
+            border-collapse: collapse;
+            /*겹치는 선 하나로*/
+            text-align: center;
+            /*가운데 정렬*/
+            padding: 5px 50px;
+            /*안쪽 여백 상하5px 좌우20px*/
+            background-color: rgb(251, 247, 247);
+        }
+
+        .classAttr {
+            font-size: 20px;
+            text-align: left;
+            font-weight: bold;
+            margin: 0px 0px 5px 0px;
+            color: red;
+        }
+
+        div{
+            margin: 30px 0px 0px 0px;
+        }
+
+        input {
+            width: 200px;
+            height: 20px;
+        }
+
+        .phoneNuminput {
+            width: 50px;
+            height: 20px;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div id="container">
+        <div class="title">
+            지원양식
+        </div>
+
+        <div class="box2" style="padding : 15px; margin : 20px 0px;">
+            <div style="
+                        background-color: white; 
+                        color: black; 
+                        font-size: 17px;
+                        text-align: left;
+                        margin: 0px 0px 15px 0px;
+                       ">
+                <span style="color: red">*빨간색은 필수 입력입니다.</span><br>
+
+            </div>
+
+            <div class="classAttr">
+                <label>
+                    이 름:
+                    <!-- autofocus는 실행시 자동으로 활성화-->
+                    <input type="text" autofocus>
+                </label>
+            </div>
+
+            <div class="classAttr">
+                <label style="color: black; font-weight: 400;">
+                    학 과:
+                    <input type="text">
+                </label>
+            </div>
+
+            <div class="classAttr">
+                연락처:
+                <select>
+                    <option>010</option>
+                    <option>011</option>
+                    <option>012</option>
+                    <option>013</option>
+                </select>
+                <span style="color: black; font-weight: 300; ">-</span>
+                <input class="phoneNuminput" type="text" style="height: 17px;">
+                <span style="color: black; font-weight: 300;">-</span>
+                <input class="phoneNuminput" type="text" style="height: 17px;">
+
+            </div>
+
+            <div class="classAttr">
+                <div>
+                    성 별:
+                    <label style="color: black; font-weight:300;"> <input type="radio"
+                            style="width: 20px; height: 20px;"> 남자 </label>
+                    <label style="color: black; font-weight:300;"> <input type="radio"
+                            style="width: 20px; height: 20px;"> 여자 </label>
+                </div>
+            </div>
+
+            <div class="classAttr">
+
+                <div style="color: black; font-weight:300;">
+                    관심언어 :
+                    <label style="color: black; font-weight:300;"><input type="checkbox" name="gender"
+                            style="width: 20px; height: 20px;"> 자바</label>
+                    <label style="color: black; font-weight:300;"><input type="checkbox" name="gender"
+                            style="width: 20px; height: 20px;"> 파이썬</label>
+                    <label style="color: black; font-weight:300;"><input type="checkbox" name="gender"
+                            style="width: 20px; height: 20px;"> C </label>
+                    <label style="color: black; font-weight:300;"><input type="checkbox" name="gender"
+                            style="width: 20px; height: 20px;"> C# </label>
+                    <label style="color: black; font-weight:300;"><input type="checkbox" name="gender"
+                            style="width: 20px; height: 20px;"> 기타언어</label>
+                </div>
+
+            </div>
+
+            <div>
+                <textarea rows="10" cols="70" placeholder="자기소개"></textarea>
+            </div>
+
+            <div>
+                <input type="button" style="width: 63px; height: 23px;" value="가입하기"><!--jsp쪽에서 자주 사용-->
+                <button>취소</button><!--스프링쪽에서 자주 사용-->
+            </div>
+
+
+        </div>
+
+
+    </div>
+</body>
+
+</html>

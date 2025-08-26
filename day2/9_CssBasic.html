@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* style태그안에서 .css파일에서 스타일 부여 방법은 여러개 */
+        /* 일단은 태그이름과와 id, class로 주는 방법 */
+        div{
+            background-color: rgb(208, 255, 0); 
+            color: rgb(6, 6, 6); 
+            font-size: 22px; 
+        }
+
+        /* id는 이름 앞에 #을 붙여줘야 한다. */
+        #idAttr {
+            font-weight: bold;
+        }
+
+        /* class는 이름 앞에 .을 붙여줘야 한다.*/
+        .classAttr{
+            font-size: 40px;
+            text-align: center; 
+        }
+    </style>
+</head>
+<body>
+    <!-- 우리 입맛에 맞게 스타일을 구성하기 위해 css를 사용 -->
+    <!-- css를 적용하는 방법은 크게 3가지로 구분 -->
+
+    <!-- 1. 확장자 .css 파일에 정의하고 html파일에서 참조(링크) -->
+    <!-- 프로젝트 단위에서 가장 흔하게 쓰이는 방법 -->
+    <!-- ex) 팀 프로젝트에서 각 화면들의 공통성을 부여하기 위해 -->
+
+    <!-- 2. head태그 안에 style태그로 정의하는 방법-->
+    <!-- 재사용을 잘 안하면서, 개발단위로 작업할 때 -->
+    <!-- ex) css를 처음 공부하거나, 각 화면의 통일성이 굳이 필요 없을 때-->
+
+    <!-- 3. (인라인)태그안에 직접 style 속성을 부여하는 방법 -->
+    <!-- 가장 쉽고 빠르게 할 수 있으나 가독성이 떨어짐 -->
+    <!-- ex) 프로젝트 단위로 작업 할때 제일 조심해야 하는 방법-->
+
+
+    <!-- css적용 우선순위는 3->2->1  -->
+    <!-- .css파일에서 test클래스 이름에 속성을 주고 -->
+    <!-- style태그에서 test클래스 이름에 속성을 주고 -->
+    <!-- test클래스 이름을 가진 태그에 속성을 주면 -->
+
+    <!-- 최종적으로는 3번(태그안에 style속성 주는 방법)이 적용된다. -->
+
+    <!-- 3번째방법 ==> 태그안에 직접적으로 스타일 주는 방법 -->
+    <div style="
+            background-color: black; 
+            color: white; 
+            font-size: 22px; font-weight: bold; 
+            font-style: italic;
+    ">
+        태그안에서 정의하는 스타일 테스트
+    </div>
+
+    <!-- 2번째방법 ==> style 태그안에 정의 -->
+    <div>
+        style태그로 정의한 부분 테스트(div태그에 스타일적용)
+    </div>
+    <!-- id는 유니크하게 사용해야 한다(다른데서 사용 x) -->
+    <div id = "idAttr" class="classAttr">
+        style 태그로 정의한 부분 테스트(+id 스타일 적용)
+    </div>
+    <!-- class는 여러번 사용해도 상관 없다. -->
+    <p class="classAttr">
+        style 태그로 정의한 부분 테스트(+class스타일 적용)
+    </p>    
+</body>
+</html>

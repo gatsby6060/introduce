@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    // alert(), confirm()
+    // window.confirm();
+    // window.alert();
+
+    // 또다른 내장함수
+    // setTimeout, setInterval
+    
+    function fnAlert(){
+        alert("5초후에 실행되었음");
+    }
+    setTimeout(fnAlert, 5000);
+    // setTimeout, setInterval 사용할때는
+    // 화살표 함수를 더 많이 사용한다.(익숙하지 않으면 익명함수)
+    // 익명함수를 넣는다function(){}
+    // setTimeout(function(){
+    // },5000);
+
+    //화살표 함수(익명함수를 화살표함수로 만듬)
+    setTimeout(()=>{
+        alert('5초후 실행');
+    },5000);
+
+
+</script>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        li:first-child{/*부모가 있는 li태그들 중 첫번째 li태그들에가만 적용*/
+            color : red;
+        }
+        li:nth-child(2){/*두번째만...*/
+            color : blue;
+        }
+        li:nth-child(2n){/*2의 배수한테만...*/
+            background-color: aqua;
+        }
+        /*홀수번째 : 2n+1, odd */
+        /*짝수번째 : 2n, even */
+        li:nth-child(even){/*짝수한테만...*/
+            background-color: aqua;
+        }
+    </style>
+</head>
+<body>
+    <ol>
+        <li>자바</li>
+        <li>오라클</li>
+        <li>html</li>
+        <li>javascript</li>
+        <li>JQuery</li>
+    </ol>
+    <ul>
+        <li>git</li>
+        <li>UML</li>
+        <li>Figma</li>
+        <li>notion</li>
+    </ul>
+</body>
+</html>

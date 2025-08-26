@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table, tr, td, th {
+            border : 2px solid black; /*두께 선스타일 선색깔*/
+            border-collapse: collapse; /*겹치는 선이 잇으면 하나로 만들겠다.*/
+            padding : 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 목록 -->
+    <!-- type에 따라 영어나 로마숫자로 순차표현. 디폴트는 1(숫자)-->
+    <ol type="">
+        <li>자바</li>
+        <li>오라클</li>
+        <li>HTML</li>
+    </ol>
+    <ul type="">
+        <li>자바</li>
+        <li>오라클</li>
+        <li>HTML</li>
+    </ul>
+
+    <!-- 테이블 -->
+    <!-- 행(tr) 열(td,th) -->
+    <!-- 행을 병합할때는 rowspan, 열을 병합할 때는 colspan -->
+    <table>
+        <tr>
+            <th>모집 기간</th>
+            <td>2월 5일 ~ 2월 11일 </td>
+        </tr>
+    </table>
+</body>
+
+</html>

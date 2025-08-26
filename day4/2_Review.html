@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+            border: 1px solid black;
+            text-align: center;
+            line-height: 100px;
+            box-sizing: border-box;
+            /*border등을 포함해서 전체크기를 width height에 맞게 하는 개념 안쪽을 줄여버림*/
+            color: aliceblue;
+        }
+
+        .box1 {
+            background-color: red;
+
+        }
+
+        .box2 {
+            background-color: blue;
+            position: relative; /*스택틱이 무시됨*/
+            /*현재*/
+            left: 30px;
+            top: 30px;
+
+        }
+
+        .box3 {
+            background-color: green;
+            position: fixed;
+            right: 100px;
+            top: 100px;
+        }
+
+        .box4 {
+            background-color: purple;
+            position: absolute;
+            /*부모가 있더라도 static이 아닌애들 기준 찾아서 기준 결국 body*/
+            left: 50px;
+            top: 50px;
+        }
+    </style>
+</head>
+
+<body><!--바디는 스태틱임-->
+    <div class="box1">box1</div>
+    <div class="box2">box2</div>
+    <div class="box3">box3</div>
+
+    <div style="position: relative; width: 300px; height: 300px;"><!--스태틱이 무시되고 relative됨-->
+        <div class="box4">box4</div>
+    </div>
+
+    <div style="margin-bottom: 1000px;"></div>
+</body>
+
+</html>

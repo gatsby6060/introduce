@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #container{
+            width: 1000px;
+            margin: 10px auto;
+        }
+        #header{
+            width: 100%;
+            height: 150px;
+            background-color: antiquewhite;
+        }
+        #sidebar{
+            width: 300px;
+            height: 700px;
+            background-color: aquamarine;
+            float:left;
+            border : 1px solid gray;
+            box-sizing: border-box; /*내부에서 1px이상 늘어놔도 총 700px 300px는 결국 맞춰준다.*/
+        }
+        #contents{
+            width: 700px;
+            height: 700px;
+            background-color: yellowgreen;
+            float:left
+        }
+        #footer{
+            width: 100%;
+            height: 150px;
+            background-color: gray;
+            clear : both;
+        }
+    </style>
+</head>
+<body>
+    <div id = "container">
+        <div id = "header">
+            검색창 넣고 메뉴 넣고
+        </div>
+        <div id = "sidebar">
+            사이드 메뉴 넣고 등등
+        </div>
+        <div id = "contents">
+            메인내용 넣고 등등
+        </div>
+        <div id = "footer">
+            회사정보 넣고 등등
+        </div>
+    </div>
+</body>
+</html>

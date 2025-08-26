@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="list">
+        숫자입력:
+        <input type="text" id="textInput">
+
+    </div>
+    <button id="btn" onclick="btnCk()">리스트 추가</button>
+</body>
+
+</html>
+<script>
+    function btnCk() {
+        let textInput = document.querySelector("#textInput").value;
+        // alert(textInput); // 잘 들어옴
+        let list = document.querySelector("#list");
+        let ul = document.createElement("ul");//<ul></ul>
+
+        for (let i = 1; i <= textInput; i++) {
+            // let li = document.createElement("li");
+
+
+            if (i % 2 == 0) {
+                ul.innerHTML += `<li style="color: blue">${i}  <span class="material-symbols-outlined">delete</span>   </li>`;
+            }else{
+                ul.innerHTML += `<li>${i}  <span class="material-symbols-outlined">delete</span>   </li>`;
+            }
+            console.log("i는 " + i);
+        }
+        list.appendChild(ul);
+    }
+
+</script>

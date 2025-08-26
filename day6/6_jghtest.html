@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table,
+        tr,
+        td,
+        th {
+            border: 1px solid black;
+            padding: 10px;
+            text-align: center;
+            border-collapse: collapse;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <input id="row" type="text" style="width: 30px;">행
+        <input id="col" type="text" style="width: 30px;">열
+        <button onclick="fntable()">작성</button>
+
+    </div>
+    <div id= "contents">
+
+    </div>
+</body>
+
+</html>
+<script>
+    function fntable() {
+        
+        let row = document.querySelector("#row").value;
+        let col = document.querySelector("#col").value;
+        alert(`버튼동작 ${row}행 ${col}열`);
+        //이하 테이블 만들려고 함
+        let num = 1;
+        let table = ""
+       
+        table = document.createElement("table");
+         
+        for (let j = 1; j <= row; j++) {
+            let row = document.createElement("tr"); // <tr></tr>
+            // let column = document.createElement("td"); // <td></td>
+            for (let i = 1; i <= col; i++) {
+                column = document.createElement("td"); //<td></td>
+                column.innerHTML = `${j},${i}`;
+                row.appendChild(column);
+            }
+            table.appendChild(row);
+        }
+        let contents = document.querySelector("#contents");
+        // contents.removeChild(table);
+        contents.appendChild(table);
+    }
+</script>

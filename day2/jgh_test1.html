@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #container{
+            width: 850px;
+            margin: 20px auto;
+        }
+        .title{
+            width: 800px; 
+            background-color: rgb(5, 195, 5);
+            color: white; /*글자색*/
+            padding : 15px 0px;
+            text-align: center; /*좌우 중앙*/ 
+            font-weight: bold;
+            font-size: 30px;/* 텍스트크기 픽셀단위 */ 
+        }
+        .box2{
+            /* 바깥쪽 여백은 margin이라는 속성을 사용 */
+            margin-top : 20px;
+            /* margin-left : 10px; */
+            width: 770px; 
+            height: 800px; 
+            border: 1px solid whitesmoke ;
+            text-align: center; /*좌우 중앙*/
+            /*line-height:  100px; 높이와 같으면 딱 높이 중간에 온다 */
+            background-color: white;
+            /* border-radius: 10px; */
+            border-radius: 1%; /*원형으로 만든다*/
+            box-shadow: 5px 5px 20px gray;
+        }
+        table, tr, td {
+            border : 1px solid gray; /*2px 크기 검은색 선(solid)로 (dotted은 점선) */
+            border-collapse: collapse; /*겹치는 선 하나로*/
+            text-align: left; /*왼쪽 정렬*/
+            padding: 5px 20px; /*안쪽 여백 상하5px 좌우20px*/
+        }
+        table {
+            width: 760px;
+        }
+        th {
+            border : 1px solid gray; /*2px 크기 검은색 선(solid)로 (dotted은 점선) */
+            border-collapse: collapse; /*겹치는 선 하나로*/
+            text-align: center; /*가운데 정렬*/
+            padding: 5px 50px; /*안쪽 여백 상하5px 좌우20px*/
+            background-color: rgb(251, 247, 247);
+        }
+
+        .classAttr{
+            font-size: 23px;
+            text-align: left; 
+            font-weight: bold;
+            margin: 15px 0px 5px 0px;
+        }
+
+    </style>
+
+      
+
+ 
+</head>
+<body>
+    <div id = "container">
+        <div class="title">
+           자바 수강생 모집<br>
+           <div style="line-height: 20px ; padding: 0px 0px 10px 0px;"><span style="font-size: 20px">자바에 관심 있는 새내기 여러분을 모집합니다.</span></div>
+        </div>
+        <div class="box2"  style = "padding : 15px; margin : 20px 0px;">
+            <div
+                style="
+                        background-color: white; 
+                        color: black; 
+                        font-size: 19px; font-weight: bold; 
+                        text-align: left;
+                        margin: 0px 0px 15px 0px;
+                       "
+            >
+            교내 프로그래밍 동아리에서 <span style="color: blue">신입생</span>을 대상으로 자바 수강생을 모집합니다.<br>
+            <span style="color: red">학부나 전공에 상관없습니다.</span><br>
+            평소 방송에 관심있었던 여러 학우들의 지원바랍니다.
+            </div>
+        <table>
+            <tr>
+                <th>모집기간</th>
+                <td>2월 5일 ~ 2월 11일</td>
+            </tr>
+            <tr>
+                <th>모집 분야</th>
+                <td>자바 기초, 자바 심화, 백엔드 입문</td>
+            </tr>
+            <tr>
+                <th>지원 방법</th>
+                <td>양식 작성 후 이메일 접수<br>
+                    <span style= "font-style:italic">지원서 양식은 교내 동아리 홈페이지 공지 게시판에 있습니다.</span>
+                </td>
+            </tr>
+        </table>
+ 
+        <div class="classAttr">혜택</div>
+        <div style = "text-align: left;">
+            <ul>
+                <li>아주 작은 소정의 활동비 지급</li>
+                <li>주기적인 회식</li>
+            </ul>
+        </div>
+        <div>
+        <a href ='#' onclick="alert('안녕!')">
+           <img src="../media/java.jpg" width="270" height="400">
+        </a>
+        </div>
+        </div>
+    
+    </div>
+    
+    
+
+</body>
+</html>

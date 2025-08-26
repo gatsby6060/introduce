@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        a{
+            color: green; /*최초색*/
+            text-decoration: nones;
+        }
+        /*마우스 올렸을 때 파란색       다른 태그에서도사용가능*/
+        a:hover{
+            color: blue;
+            text-decoration: underline;
+        }
+
+        /* link => 방문하지 않은 링크에 스타일 부여 */
+        a:link {color : red;}
+        /* visited => 방문한 링크에 스타일 부여*/
+        a:visited{color : purple}
+        /* active => 클릭하는 순간 스타일 부여*/
+        a:active{color : yellowgreen}
+        /* focus => 포커스를 받을 때 스타일 부여*/
+        a:focus{color:orange}
+    </style>
+</head>
+<body>
+    <div>
+        <a href= "https://www.naver.com">네이버</a>
+    </div>
+</body>
+</html>

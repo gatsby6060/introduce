@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div>
+        비밀번호 : <input type="password" id="pwd1">
+    </div>
+    <div>
+        비밀번호 확인 : <input type="password" id="pwd2">
+    </div>
+    <div>
+        이름 : <input type="text" id="name">
+    </div>
+    <div>
+        <button onclick="fnJoin()">가입!</button>
+    </div>
+</body>
+
+</html>
+<script>
+    //fnJoin함수를 만들고
+    //pwd1, pwd2가 같은지 확인하는 코드 작성
+
+    function fnJoin() {
+        let pwd1 = document.querySelector("#pwd1").value;
+        let pwd2 = document.querySelector("#pwd2").value;
+        let name = document.querySelector("#name").value;
+
+        if(pwd1 != pwd2){
+            console.log("비밀번호를 다시 확인해주세요.");
+            return; //함수를 바로 빠져 나간다 더이상 아래 코드를 실행X
+        }
+        if(name == ""){
+            alert("이름을 입력해주세요.");
+        }
+        // if (pwd1 == pwd2) {
+        //     console.log("같다");
+        // } else {
+        //     console.log("다르다");
+        // }
+
+    }
+</script>

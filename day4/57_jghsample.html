@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>mq 테스트</title>
+  <style>
+    /* *는 전체 속성 아래쪽에서 필요에 따라 수정 */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: rgb(191, 199, 205);
+    }
+
+    img {
+      width: 300px;
+      height: 250px;
+    }
+
+    #container {
+      width: 1140px;
+      margin: 50px auto;
+    }
+
+    .card {
+      position: relative;
+      float: left;
+      /* 카드를 가로로 배치 */
+      width: 550px;
+      height: 250px;
+      margin: 10px;
+      border: 1px solid #0f0f0f33;
+      background-color: #ffffff;
+    }
+
+    .words {
+      position: absolute;
+      left: 310px;
+      top: 70px;
+      text-align: center;
+      width: 200px;
+    }
+
+
+    body {
+      /*fixed는 스크롤 내려도 이미지는 고정*/
+      /* background: url("../media/img1_1.jpg") no-repeat fixed; */
+      background-size: cover;
+    }
+
+    @media screen and (max-width : 1000px) {
+
+      #container {
+        width: 600px;
+        margin: 50px auto;
+      }
+
+      .card {
+        /*float지우기*/
+        clear: both;
+        /*이거 없어도 기본설정으로 돌아가긴함*/
+        
+      }
+
+    }
+
+
+    @media screen and (max-width : 600px) {
+
+      #container {
+        width: 350px;
+        margin: 50px auto;
+      }
+
+      .card {
+        position: relative;
+        float: left;
+        /* 카드를 가로로 배치 */
+        width: 300px;
+        height: 500px;
+        margin: 10px;
+        border: 1px solid #0f0f0f33;
+        background-color: #ffffff;
+      }
+
+      .words {
+        position: absolute;
+        left: 50px;
+        top: 350px;
+        text-align: center;
+        width: 200px;
+
+      }
+    }
+
+    @media screen and (max-width : 500px) {
+      body {
+        /* background: url("../media/img4.jpg") no-repeat fixed; */
+        background-size: cover;
+      }
+    }
+  </style>
+
+
+
+</head>
+
+<body>
+  <div id="container">
+    <div class="card">
+      <img src="../media/park1.jpg">
+      <div class="words">
+        <h2>아유... 하기 싫어..</h2>
+        <h3>- 박명수</h3>
+      </div>
+    </div>
+    <div class="card">
+      <img src="../media/park2.jpg" class="src">
+      <div class="words">
+        <h2>그냥 놀고 싶다</h2>
+        <h3>- 박명수</h3>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
+
+<script>
+  function maketxt() {
+    let obj = document.querySelector("#container");
+
+    // let objtxt = document.querySelector("#txt").value;
+    // let objtxtSize = document.querySelector("#txtSize").value;
+    // let txtColer = document.querySelector("#txtColer").value;
+    // alert(objtxt.value);
+    // alert(objtxtSize.value);
+    // alert(txtColer.value);
+    obj.innerHTML = `<body>
+                          <div id="container">
+                            <div class="card">
+                              <img src="../media/park1.jpg">
+                              <div class="words">
+                                <h2>아유... 하기 싫어..</h2>
+                                <h3>- 박명수</h3>
+                              </div>
+                            </div>
+                            <div class="card">
+                              <img src="../media/park2.jpg">
+                              <div class="words">
+                                <h2>그냥 놀고 싶다</h2>
+                                <h3>- 박명수</h3>
+                              </div>
+                            </div>
+                          </div>
+                        </body> `;
+  }
+</script>

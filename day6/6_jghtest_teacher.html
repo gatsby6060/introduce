@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table,
+        tr,
+        td,
+        th {
+            border: 1px solid black;
+            padding: 10px;
+            text-align: center;
+            border-collapse: collapse;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <input id="rCnt" type="text" style="width: 30px;">행
+        <input id="cCnt" type="text" style="width: 30px;">열
+        <button onclick="fnDrawtable()">작성</button>
+
+    </div>
+    <div id="contents">
+
+    </div>
+</body>
+
+</html>
+<script>
+    function fnDrawtable() {
+        let contents = document.querySelector("#contents");
+        contents.innerHTML="";
+        let rows = document.querySelector("#rCnt").value;
+        let cols = document.querySelector("#cCnt").value;
+
+        let table = document.createElement("table");
+
+        for (let i = 1; i <= rows; i++) {
+            let tr = document.createElement("tr");
+            for (let j = 1; j <= cols; j++) {
+                let td = document.createElement("td");
+                td.innerHTML = `${i}-${j}`; 
+                tr.appendChild(td); //td열이 반복적으로 tr행에 들어간다
+            }
+            table.appendChild(tr); //열들을 가진 행이 테이블에 들어감
+        }
+        contents.appendChild(table);
+    }
+</script>
