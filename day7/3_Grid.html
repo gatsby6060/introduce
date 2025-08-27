@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #container{
+            width: 800px;
+            border: 1px solid red;
+            display: grid;
+            /* auto-fit은 전체 크기에 맞춰서 요소들도 꽉채움 */
+            /* grid-template-columns: repeat(auto-fit,minmax(100px,1fr));오토핏는 좌우를 꽉 채움, 전체 크기를 6?등분해서 맞추겠다 */
+            grid-template-columns: repeat(auto-fill,minmax(100px,1fr));/*오토필는 빈공간은 놔둔다, 전체 크기를 6?등분한다*/
+        }
+        .box{
+            border:1px solid black;
+            padding : 5px 10px;
+            font-size:  20px;
+            text-align: center;
+        }
+        .box:nth-child(odd){
+            background-color: greenyellow;
+        }
+    </style>
+</head>
+<body>
+    <div id = "container">
+        <div class="box">1</div>
+        <div class="box">2</div>
+        <div class="box">3</div>
+        <div class="box">4</div>
+        <div class="box">5</div>
+        <div class="box">6</div>
+    </div>
+</body>
+</html>
