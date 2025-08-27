@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #container {
+            width: 800px;
+            margin: 10px auto;
+            height: 1000px;
+        }
+
+        .topmenucontents {
+            float: left;
+        }
+
+        .center {
+            text-align: center;
+            position: relative;
+            margin: 0 auto;
+            ;
+        }
+
+        #desc {
+            width: 300px;
+             height: 480px;
+            margin-top: 5px;
+            float: left;
+            box-shadow: 2px 2px 15px rgb(29, 31, 27);
+        }
+
+        #prod-pic {
+            margin: 10px 10px;
+            text-align: center;
+            float: left;
+        }
+
+        #desc ul {
+            list-style: none;
+            /* 리스트점 안보여주기*/
+        }
+
+        .small {
+            /* width: 100px; */
+            /* height: 100px; */
+            margin: 3px;
+            /* float: left; */
+            display: inline-block; /* float 대신 inline-block */
+        }
+        #small-img{
+            text-align: center;
+        }
+
+        #contentsbox{
+            width: 100%;
+            height: 500px;
+            background-color: rgb(251, 244, 235);
+            padding: 20px 0px;
+           
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <div id="container">
+        <div id="header">
+            <div id="" style="background-color: rgb(28, 28, 30); color: white; text-align: center;">
+                <h1>상품 상세 페이지</h1>
+                <h2 style="margin: 0px;">정말~~ 좋은 자바 프로그래밍 책을 만나보세요!</h2>
+            </div>
+
+            <div class="center" style="background-color: rgb(23, 23, 87); color: white; height: 40px; padding-top: 10px;">
+                
+                    <a style="margin: 10px 10px;">홈</a>
+                    <a style="margin: 10px 10px;">카테고리</a>
+                    <a style="margin: 10px 10px;">장바구니</a>
+                    <a style="margin: 10px 10px;">주문하기</a>
+                
+                <!-- <p class="topmenucontents">홈</p>
+                <p class="topmenucontents">카테고리</p>
+                <p class="topmenucontents">장바구니</p>
+                <p class="topmenucontents">주문하기</p> -->
+            </div>
+        </div>
+
+
+        <div id ="contentsbox">
+
+        <div id="prod-pic" style="float: left">
+            <img src="../media/java.jpg" id="main-book" width="250" height="300">
+            <div id="small-img">
+                <img src="../media/java2.jpg" class="small" style="height: 30%; width: 30%;">
+                <img src="../media/java3.jpg" class="small" style="height: 30%; width: 30%;">
+            </div>
+        </div>
+        <div id="desc">
+            <h3 style="text-align: center; margin: 10px;">자바프로그래밍 책</h1>
+                <ul style="margin: 10px; padding-inline-start:1px">
+                    <li>상품명 : 자바 책</li>
+                    <hr>
+                    <li class=" blue-txt">판매가 : 199,000원</li>
+                    <hr>
+                    <li>배송비 : 30,000원</li>
+                    <hr>
+                    <li>(50,000,000원 이상 구매시 무료)</li>
+                    <hr>
+                    <li>적립금:199원(0.1%)</li>
+                    <hr>
+                    <li>발매일:2023.12.30</li>
+                    <button
+                        style="width: 95%; height: 40px; background-color: green; color: aliceblue; font-size: 20px; border-radius: 10%;">장바구니
+                        담기</button>
+                    <br>
+                    <br>
+                    <button
+                        style="width: 40%; height: 40px; background-color: rgb(121, 196, 121); color: aliceblue; font-size: 20px; border-radius: 10%; float: left;">-</button>
+                    <input type="text" name="" id="" style="width: 10%; float: left; margin: 10px 5px;">
+                    <button
+                        style="width: 40%; height: 40px; background-color: rgb(121, 196, 121); color: aliceblue; font-size: 20px; border-radius: 10%; ">+</button>
+                    <br>
+                    <div style="text-align: center;"><a href="javascript:;" onclick="fnDetail()">상세 설명 보기</a></div>
+                </ul>
+        </div>
+
+        </div>
+
+
+    </div>
+</body>
+
+</html>
