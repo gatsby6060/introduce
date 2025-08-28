@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+<body>
+    <div id="app">
+        <input v-model="num"><!-- input박스와 연결-->
+        <button @click="fnNumber">판별</button>
+        <hr>
+        <div v-if="num != ''">
+            <span v-if="num%2 == 1" style="color:blue;">홀수 입니다.</span>
+            <span v-else style="color:green">짝수 입니다.</span>
+        </div>
+    </div>
+</body>
+</html>
+
+<script>
+    const app = Vue.createApp({
+        data() {
+            return {
+                // 변수 - (key : value)
+                num : ""
+            };
+        },
+        methods: {
+            // 함수(메소드) - (key : function())
+            fnUserList: function () {
+                $.ajax({
+                    url: "",
+                    dataType: "json",
+                    type: "GET",
+                    data: {},
+                    success: function (data) {
+
+                    }
+                });
+            }
+            ,//하나더 정의할때
+            fnNumber: function () {
+                let self = this;
+                // (내)변수에 접근할때는 this를 써야한다. 
+                if((self.num)%2 == 0){
+                    alert("짝수")
+                }else if((self.num)%2 != 0) {
+                    alert("홀수")
+                }else{
+                    alert("넌 이제 춘식이여")
+                }; //내 객체의 변수에 접근해서 김철수로 강제로 바꿈
+            },
+        },
+        mounted() {
+            // 처음 시작할 때 실행되는 부분
+        }
+    });
+
+    app.mount('#app');
+</script>

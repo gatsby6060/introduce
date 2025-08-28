@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"
+        integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <style>
+        table,
+        tr,
+        td,
+        th {
+            border: 1px solid black;
+            text-align: center;
+            padding: 5px 20px;
+            border-collapse: collapse;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <!-- {{list}} 아래쪽에서 list : []에 담긴것을 보여준다. -->
+        <div v-if="!editMode">
+            <table>
+                <tr>
+                    <th>학번</th>
+                    <th>이름</th>
+                    <th>학과</th>
+                    <th>학년</th>
+                    <th>키</th>
+                    <th>삭제</th>
+                    <th>수정</th>
+                </tr>
+                <tr v-for="item in list"><!--첫행에는 item 자체가 담겨있을것-->
+                    <td>{{item.STU_NO}}</td><!--이후에 각각의 .키값으로 가져옴-->
+                    <td>{{item.STU_NAME}}</td>
+                    <td>{{item.STU_DEPT}}</td>
+                    <td>{{item.STU_GRADE}}</td>
+                    <td>{{item.STU_HEIGHT}}</td>
+                    <td><button @click="fnRemove(item.STU_NO)">삭제</button></td><!--요래야 함수 동작함-->
+                    <td><button @click="fnEditMode(item)">수정</button></td>
+                </tr>
+            </table>
+            <div>
+                <button @click="fnAdd">학생추가</button>
+            </div>
+        </div>
+        <div v-else>
+            <div>학번 : {{info.STU_NO}}</div>
+            <div>이름 : <input v-model="name"></div>
+            <div>학과 : <input v-model="dept"></div>
+            <div>
+                <button @click="fnEdit">수정</button>
+                <button @click="editMode = false">취소</button>
+            </div>
+        </div>
+
+    </div>
+</body>
+
+</html>
+
+<script>
+    const app = Vue.createApp({
+        data() {
+            return {
+                // 변수 - (key : value)
+                list: [], //아래쪽에서 self.list = data.list;해서 데이터를 담아준다
+                Info: {},
+                editMode: false, //변수
+                name: "",
+                dept: ""
+            };
+        },
+        methods: {
+            // 함수(메소드) - (key : function())
+            fnUserList: function () {
+                let self = this; //이래야 vue 자신을 나타냄  아작스 안에서 쓰면 아작스를 나타내서 안됨!
+                $.ajax({
+                    url: "http://localhost:3009/list",
+                    dataType: "json",
+                    type: "GET",
+                    data: {},
+                    success: function (data) {
+                        console.log(data);
+                        self.list = data.list;
+                    }
+                });
+            },//이하 함수 추가함
+            fnRemove: function (stuNumber) {
+                let self = this;
+                if (!confirm("정말 삭제하실?")) {
+                    return; //취소시
+                }
+                $.ajax({
+                    url: "http://localhost:3009/delete",
+                    dataType: "json",
+                    type: "GET",
+                    data: { stuNo: stuNumber }, //서버에 보낼떄는 서버에서 정한 변수명(stuNo)을 맞춰준다
+                    success: function (data) {
+                        alert("삭제되었습니다.");
+                        self.fnUserList();//삭제끝나면 목록 다시 불러옴
+                    }
+                });
+            },
+            fnEdit: function () {
+                let self = this;
+
+                if (!confirm("정말 수정하실것인가요?")) {
+                    return; //취소시
+                }
+                let param = {
+                    stuNo: self.info.STU_NO,
+                    name: self.name, //인풋박스안
+                    dept: self.dept  //인풋박스안
+                }; //값을 여러게 넣을때는 따로 빼서 키 밸류로 만들어서 아작스에 넣는다.
+                $.ajax({
+                    url: "http://localhost:3009/update",
+                    dataType: "json",
+                    type: "GET",
+                    data: param, //서버에 보낼떄는 서버에서 정한 변수명(stuNo)을 맞춰준다
+                    success: function (data) {
+                        alert("수정 되었습니다.");
+                        self.fnUserList();//목록 다시 불러옴
+                        self.editMode = false; //지운 표 다시 보임
+                    }
+                });
+            },
+            fnEditMode: function (map) {
+                let self = this;
+                self.info = map;                // 어떤 행을 수정할지 참조만 보관
+                self.editMode = !self.editMode; //true false를 맞바꿔줌
+                self.name = map.STU_NAME        // self.name에 따로 넣어줌 이래야 나중에 주소 공유를 차단
+                self.dept = map.STU_DEPT        // self.dept 따로 넣어줌 이래야 나중에 주소 공유를 차단
+            },
+            fnAdd: function (params) {
+                location.href = "7_Vue_Insert.html";
+            }
+
+
+        },
+        mounted() {
+            // 처음 시작할 때 실행되는 부분
+            let self = this;
+            self.fnUserList();
+        }
+    });
+
+    app.mount('#app');
+</script>
