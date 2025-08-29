@@ -164,8 +164,8 @@
                     data: param,
                     success: function (data) {
                         console.log(data);
+                        self.fnBack();
                         alert("내용 업데이트 완료");
-                        fnBack();
                     }
                 });
             }
