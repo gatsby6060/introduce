@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.js"
+        integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <style>
+        #container {
+            width: 600px;
+            margin: 10px auto;
+        }
+
+        table,
+        tr,
+        td,
+        th {
+            border: 1px solid black;
+            text-align: center;
+            padding: 5px 20px;
+            border-collapse: collapse;
+        }
+
+        th {
+            background-color: beige;
+        }
+
+        td {
+            width: 400px;
+        }
+
+        #contents {
+            height: 200px;
+        }
+
+        button {
+            margin-top: 5px;
+            margin-right: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+
+        <div id="container">
+            <div>게시글 상세정보</div>
+            <table>
+                <tr>
+                    <th>제목</td>
+                    <td>{{info.TITLE}}</td>
+                </tr>
+                <tr>
+                    <th>작성자</td>
+                    <td>{{info.USERID}}</td>
+                </tr>
+                <tr>
+                    <th>조회수</td>
+                    <td>{{info.CNT}}</td>
+                </tr>
+                <tr>
+                    <th>작성일</td>
+                    <td>{{info.CTIME}}</td>
+                </tr>
+                <tr>
+                    <th>내용</td>
+                    <td id="contents">{{info.CONTENTS}}</td>
+                </tr>
+            </table>
+            <div>
+                <button @click="fnEdit">수정</button>
+                <!-- 삭제 주소는 /board/delete -->
+                <!--삭제후 리스트페이지로...-->
+                <button @click="fnRemove">삭제</button>
+                <button @click="fnList">목록으로</button><!--리스트페이지로...-->
+            </div>
+        </div>
+
+    </div> <!--app끝 VUE.js끝?-->
+</body>
+
+</html>
+
+<script>
+    const app = Vue.createApp({
+        data() {
+            return {
+                // 변수 - (key : value)
+                boardNo: "", //파라미터로 보낸 값을 여기 담겠다?
+                // list: [], // 일단 있으면 좋을것 같음
+                info: {}
+            };
+        },
+        methods: {
+            // 함수(메소드) - (key : function())
+            fnBoardInfo: function () {
+                let self = this;
+                $.ajax({
+                    url: "http://localhost:3009/board/view",
+                    dataType: "json",
+                    type: "GET",
+                    data: { boardNo: self.boardNo },
+                    success: function (data) {
+                        console.log(data[0]);
+                        self.info = data[0];
+                    }
+                });
+            },
+            fnRemove: function (boardNo) {
+                let self = this;
+                if (!confirm("정말 삭제하시겠습니까?")) {
+                    return;
+                }
+                $.ajax({
+                    url: `http://localhost:3009/board/delete`,
+                    dataType: "json",
+                    type: "GET",
+                    data: { boardNo: self.boardNo }, //?뒤에 붙는 그런 파라미터를 여기에 적음
+                    success: function (data) {
+                        console.log(data);
+                        alert("삭제되었습니다!");
+                        self.fnList();
+                    }
+                });
+            },
+            fnList: function () {
+                location.href = "board-list.html";
+            },
+            fnEdit: function(){
+                location.href=`board-edit.html?boardNo=${this.boardNo}`;
+            },
+            fncntupdate: function () {
+                let self = this;
+                $.ajax({
+                    url: `http://localhost:3009/cntupdate`,
+                    dataType: "json",
+                    type: "GET",
+                    data: { boardNo: self.boardNo }, //?뒤에 붙는 그런 파라미터를 여기에 적음
+                    success: function (data) {
+                        console.log(data);
+                        alert("조회수+1완료");
+                    }
+                });
+            }
+
+        },
+        mounted() {// 처음 시작할 때 실행되는 부분
+
+            const queryParams = new URLSearchParams(window.location.search);
+            this.boardNo = queryParams.get('boardNo') || ''; //get('boardNo')는 내가 보낸, 요청한 파라미터 이름
+            console.log("boardNo ===>", this.boardNo); //내가 보내준 (요청한) 값 출력 가능
+
+            this.fnBoardInfo(); //바로 함수 실행
+            this.fncntupdate();
+        }
+    });
+
+    app.mount('#app');
+</script>

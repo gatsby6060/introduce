@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.js"
+        integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <style>
+        #container {
+            width: 600px;
+            margin: 10px auto;
+        }
+
+        table,
+        tr,
+        td,
+        th {
+            border: 1px solid black;
+            text-align: center;
+            padding: 5px 20px;
+            border-collapse: collapse;
+        }
+
+        th {
+            background-color: beige;
+        }
+
+        td {
+            width: 400px;
+        }
+
+        #contents {
+            height: 200px;
+        }
+
+        button {
+            margin-top: 5px;
+            margin-right: 5px;
+        }
+
+        input[type="text"] {
+            width: 92%;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+
+        <div id="container">
+            <table>
+
+                <tr>
+                    <th>제목</td>
+                    <td>
+                        <label>
+                            <input type="radio" v-model="selectItem" name="kind" value="1"> 공지사항
+                        </label>
+                        <label>
+                            <input type="radio" v-model="selectItem" name="kind" value="2"> 자유게시판
+                        </label>
+                        <label>
+                            <input type="radio" v-model="selectItem" name="kind" value="3"> 문의게시판
+                        </label>
+                    </td>
+                </tr>
+
+                <tr>
+                    <th>제목</td>
+                    <td><input type="text" v-model="title"></td>
+                </tr>
+
+                <tr>
+                    <th>작성자</td>
+                    <td><input type="text" v-model="userId"></td>
+                </tr>
+
+                <tr>
+                    <th>내용</td>
+                    <td><textarea type="text" v-model="contents" cols="50" rows="20"></textarea></td>
+                </tr>
+            </table>
+            <div>
+                <button @click="fnUdate">수정</button>
+                <button @click="fnBack">되돌아가기</button>
+            </div>
+        </div>
+
+    </div> <!--app끝 VUE.js끝?-->
+</body>
+
+</html>
+
+<script>
+    const app = Vue.createApp({
+        data() {
+            return {
+                // 변수 - (key : value)    html상의 v-model=""에 있는 값은 여기에 적는다!
+                boardNo: "", // 상세페이지에서 페이지번호를 보내준것을 이것에 받을 예정!!!
+                title: "",
+                userId: "",
+                contents: "",
+                selectItem: 1
+            };
+        },
+        methods: {
+            // 함수(메소드) - (key : function())
+            fnSave: function () {
+                let self = this; //이걸 해야 위에 지역?내? list변수 사용가능
+                let param = {
+                    title: self.title, // 서버로 보내줄 파라미터... 
+                    userId: self.userId,
+                    contents: self.contents,
+                    kind: self.selectItem
+                };
+                $.ajax({
+                    url: "http://localhost:3009/board/insert",
+                    dataType: "json",
+                    type: "GET",
+                    data: param,
+                    success: function (data) {
+                        alert("저장되었습니다.");
+                        // console.log(data);
+                        self.fnBack();
+                    }
+                });
+            },
+            fnBack: function () {
+                location.href = "board-list.html"
+            },
+            fnBoardInfo: function () {
+                let self = this;
+                $.ajax({
+                    url: "http://localhost:3009/board/view",
+                    dataType: "json",
+                    type: "GET",
+                    data: { boardNo: self.boardNo },
+                    success: function (data) {
+                        console.log(data[0]);
+                        self.title = data[0].TITLE;   //  디비의 정보를 프론트의 id나 name에 맞춰서 넣어준다
+                        self.userId = data[0].USERID;  //  프론트변수 <-- 서버디비변수
+                        self.contents = data[0].CONTENTS; //  프론트변수 <-- 서버디비변수
+                        self.selectItem = data[0].KIND; //  프론트변수 <-- 서버디비변수
+                    }
+                });
+            },
+            fnUdate: function () {
+                let self = this;
+                let param = {
+                    boardNo: self.boardNo,
+                    title: self.title, // 서버디비로 보내줄 파라미터... 
+                    userId: self.userId,
+                    contents: self.contents,
+                    kind: self.selectItem
+                };
+                $.ajax({
+                    url: "http://localhost:3009/board/update",
+                    dataType: "json",
+                    type: "GET",
+                    data: param,
+                    success: function (data) {
+                        console.log(data);
+                        alert("내용 업데이트 완료");
+                        fnBack();
+                    }
+                });
+            }
+
+        }, //methods------------------------끝부분
+        mounted() {
+            // 처음 시작할 때 실행되는 부분
+            const queryParams = new URLSearchParams(window.location.search); // 보낸거 받음
+            this.boardNo = queryParams.get('boardNo') || ''; //get('boardNo')는 내가 보낸, 요청한 파라미터 이름
+            this.fnBoardInfo(); //바로 함수 실행
+
+        }
+    });
+
+    app.mount('#app');
+</script>
