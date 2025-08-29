@@ -579,18 +579,42 @@
 
 <!-- 배경음악 자동재생 페이크---------------------S -->
 <iframe id="bgm" width="0" height="0"
-    src="https://www.youtube.com/embed/fuz2F8GGQKI?autoplay=1&mute=1&loop=1&playlist=fuz2F8GGQKI&controls=0&rel=0&modestbranding=1&playsinline=1"
+    
     title="YouTube background video" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen>
 </iframe>
-<iframe id="bgm2" width="0" height="0"
+<!-- <iframe id="bgm2" width="0" height="0"
     src="https://www.youtube.com/watch?v=l5995fTszNY?autoplay=1&mute=1&loop=1&playlist=fuz2F8GGQKI&controls=0&rel=0&modestbranding=1&playsinline=1"
     title="YouTube background video" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen>
 </iframe>
 <iframe id="bgm3" width="0" height="0"
     src="https://www.youtube.com/watch?v=a3ju2y12-FY?autoplay=1&mute=1&loop=1&playlist=fuz2F8GGQKI&controls=0&rel=0&modestbranding=1&playsinline=1"
     title="YouTube background video" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen>
-</iframe>
+</iframe> -->
 <script>
+      // 1) src 문자열 3개(각자 playlist=영상ID 로 맞춘 embed URL)
+        let bgm1 = "https://www.youtube.com/embed/fuz2F8GGQKI?autoplay=1&mute=1&loop=1&playlist=fuz2F8GGQKI&controls=0&rel=0&modestbranding=1&playsinline=1";
+        let bgm2 = "https://www.youtube.com/embed/l5995fTszNY?autoplay=1&mute=1&loop=1&playlist=l5995fTszNY&controls=0&rel=0&modestbranding=1&playsinline=1";
+        // let bgm3 = "https://www.youtube.com/embed/u7fx8leNkaM?autoplay=1&mute=1&loop=1&playlist=u7fx8leNkaM&controls=0&rel=0&modestbranding=1&playsinline=1";
+        // let bgm4 = "https://www.youtube.com/embed/eQK5uort8Fk?autoplay=1&mute=1&loop=1&playlist=eQK5uort8Fk&controls=0&rel=0&modestbranding=1&playsinline=1";
+        // let bgm5 = "https://www.youtube.com/embed/5ogUKZXBMUQ?autoplay=1&mute=1&loop=1&playlist=5ogUKZXBMUQ&controls=0&rel=0&modestbranding=1&playsinline=1";
+        
+        let bgm7 = "https://www.youtube.com/embed/YfB5xeC6VsE?autoplay=1&mute=1&loop=1&playlist=YfB5xeC6VsE&controls=0&rel=0&modestbranding=1&playsinline=1";
+        let bgm8 = "https://www.youtube.com/embed/BQEWS4UmgHw?autoplay=1&mute=1&loop=1&playlist=BQEWS4UmgHw&controls=0&rel=0&modestbranding=1&playsinline=1";
+        let bgm9 = "https://www.youtube.com/embed/M8psRaOxoeI?autoplay=1&mute=1&loop=1&playlist=M8psRaOxoeI&controls=0&rel=0&modestbranding=1&playsinline=1";
+        let bgm10 = "https://www.youtube.com/embed/-jidITdmeNM?autoplay=1&mute=1&loop=1&playlist=-jidITdmeNM&controls=0&rel=0&modestbranding=1&playsinline=1";
+        // let bgm11 = "https://www.youtube.com/embed/6fkEIAgDLbU?autoplay=1&mute=1&loop=1&playlist=6fkEIAgDLbU&controls=0&rel=0&modestbranding=1&playsinline=1";
+        // let bgm12 = "https://www.youtube.com/embed/LiW3yBJ3AF0?autoplay=1&mute=1&loop=1&playlist=LiW3yBJ3AF0&controls=0&rel=0&modestbranding=1&playsinline=1";
+
+
+        // 2) 랜덤으로 하나 고르기
+        const list = [bgm1, bgm2,                     bgm7, bgm8, bgm9, bgm10           ];
+        const pick = list[Math.floor(Math.random() * list.length)];
+        console.log("pick된 bgm은" + pick);
+        // 3) 선택된 것을 iframe에 주입
+        const iframe = document.getElementById('bgm');
+        iframe.src = pick;
+
+
     function bgmTest() {
         const iframe = document.getElementById('bgm');
         // if (!iframe) return;
