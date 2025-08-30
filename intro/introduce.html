@@ -31,7 +31,7 @@
 
         #sidebar {
             width: 200px;
-            height: 777px;
+            height: 888px;
             /* background-color: rgb(166, 206, 243); */
             background: linear-gradient(to bottom, rgb(166, 206, 243), white);
             float: left;
@@ -42,7 +42,7 @@
 
         #contents {
             width: 700px;
-            height: 777px;
+            height: 888px;
             /* background-color: rgb(240, 240, 240); */
             background: linear-gradient(to bottom, rgb(241, 241, 241), white);
             float: left;
@@ -51,7 +51,7 @@
 
         #rightside {
             width: 100px;
-            height: 777px;
+            height: 888px;
             /* background-color: rgb(250, 250, 250); */
             background: linear-gradient(to bottom, rgb(250, 250, 250), white);
             float: left;
@@ -137,13 +137,23 @@
             color: green;
             /*최초색*/
             text-decoration: none;
+            /* padding: 10px 15px; */
+            /* width: 100%; */
+            /* display: block; */
         }
 
         /*마우스 올렸을 때 파란색       다른 태그에서도사용가능*/
-        a:hover {
-            color: blue;
-            text-decoration: underline;
-        }
+        /* a:hover { */
+            /* color: blue;
+            text-decoration: underline; */
+            /* background: rgba(128, 128, 128, 0.2); */
+            /* display: block; */
+            /* border-radius: 10px; */
+            /* padding: 10px 15px; */
+            /* width: 100%; */
+        /* } */
+
+
 
         /* link => 방문하지 않은 링크에 스타일 부여 */
         a:link {
@@ -152,7 +162,7 @@
 
         /* visited => 방문한 링크에 스타일 부여*/
         a:visited {
-            color: purple
+            color: rgb(0, 0, 0)
         }
 
         /* active => 클릭하는 순간 스타일 부여*/
@@ -202,7 +212,7 @@
 
             #sidebar {
                 width: 400px;
-                height: 550px;
+                height: 790px;
                 /* margin: 50px auto; */
             }
 
@@ -319,6 +329,20 @@
             text-align: center;
             color: blue;
         }
+
+        .jghmarginleft a {
+            width: 80%;
+            display: block;
+            padding: 10px 0px;
+        }
+
+        .jghmarginleft a:hover {
+            background: rgba(0, 0, 0, 0.2);
+            display: block;
+            border-radius: 10px;
+            padding: 10px 10px;
+            width: 80%;
+        }
     </style>
 </head>
 
@@ -328,9 +352,9 @@
         <div id="header">
             <!-- 검색창 넣고 메뉴 넣고 예정-->
             <span id="light" onclick="fnMode()" class="material-symbols-outlined"
-                style="font-size: 55px; margin: 15px;">light_mode</span>
+                style="font-size: 58px; margin: 22px;">light_mode</span>
             <span id="dark" onclick="fnMode()" class="material-symbols-outlined"
-                style="font-size: 55px; margin: 15px;">dark_mode</span>
+                style="font-size: 58px; margin: 22px;">dark_mode</span>
 
             <!-- <a href="" onclick="alert('안녕!')" style="float: right;">
                 <img src="../media/java.jpg" height="145px">
@@ -365,18 +389,35 @@
                     phone_enabled
                 </span>
             </div>
+
             <br>
-            <div class="jghmarginleft jghtextbold">SNS</div>
             <br>
+            <div class="jghmarginleft jghtextbold">---------새창 연결--------</div>
             <div class="jghmarginleft jghtextbold">
-                <a href="https://www.naver.com" target="_blank">네이버 이동 클릭</a>
-                <br>
-                <br>
                 <!-- <a href="../day9/board-list.html" target="_blank">게시판 이동 클릭</a> -->
-                 <a href="/introduce/day9/board-list.html" target="_blank">게시판 이동 클릭</a>
+                <a href="/introduce/day9/board-list.html" target="_blank">게시판 새창 클릭</a>
+                <a href="https://www.naver.com" target="_blank">네이버 새창 클릭</a>
+                <!-- <br><br> -->
+
                 <!-- <a href="https://gatsby6060.github.io/introduce/day9/board-list.html" target="_blank">게시판 이동 클릭</a> -->
-                
+                <a href="https://www.daum.net" target="_blank">다음 새창 클릭</a>
             </div>
+
+            <br>
+            <br>
+            <div class="jghmarginleft jghtextbold">---------연결사이트--------</div>
+            <div style="text-align: center;" class="connectionsite_1">
+                <a href="https://www.instagram.com/" target="_blank">
+                    <img src="../media/insta.jpg" width="50px" height="50px" class="connectionsite_1_1">
+                </a>
+                <a href="https://www.facebook.com/" target="_blank">
+                    <img src="../media/face.jpg" width="50px" height="50px" class="connectionsite_1_2">
+                </a>
+                <a href="https://www.github.com" target="_blank">
+                    <img src="../media/github-mark.png" width="50px" height="50px" class="connectionsite_1_3">
+                </a>
+            </div>
+
 
         </div>
 
@@ -399,6 +440,7 @@
                     <li>프론트엔드
                         <ul>
                             <li>HTML/CSS/JAVASCRIPT </li>
+                            <li>Vue.js</li>
                             <li>웹 페이지 잘 만든다 </li>
                             <li>다 잘함</li>
                         </ul>
@@ -417,8 +459,12 @@
                 <h2 class="subtitle">보유 기술</h2>
                 <li style="list-style: none;">
                     <ul>
-                        <li>자바 </li>
+                        <li>자바</li>
                         <li>오라클</li>
+                        <li>HTML,CSS,JAVASCRIPT</li>
+                        <li>Vue.js</li>
+                        <li>깃허브</li>
+                        <li>VSCODE, 이클립스, SQLDEVELOPER, </li>
                     </ul>
                 </li>
             </section>
@@ -427,7 +473,7 @@
             <section>
                 <h2 class="subtitle">Education</h2>
                 <table>
-                    <caption><span style="color: red; font-weight: bold;">학력 사항</span></caption>
+                    <caption><span style="color: blue; font-weight: bold;">학력 사항</span></caption>
                     <thead>
                         <tr>
                             <th>출신학교</th>
@@ -495,9 +541,9 @@
                 <img src="https://visitor-badge.laobi.icu/badge?page_id=gatsby6060.introduce.intro" alt="visits"
                     style="vertical-align:middle;height:18px; margin-right: 5px;" id="visitorBadge" onclick="egg()">
             </div>
-            <button id="bgmBtnOff" style="font-size: 12px; margin: 5px;" onclick="bgmBtnOff()">노래 끄기</button>
+            <button id="bgmBtnOff" style="font-size: 12px; margin: 15px;" onclick="bgmBtnOff()">노래 끄기</button>
             <!-- <button id="bgmBtnReOn" style="font-size: 12px; margin: 5px;">노래 다시 키기</button> -->
-            <button id="bgmBtnReOn" style="font-size: 12px; margin: 5px;" onclick="bgmBtnReOn()">노래 다시 키기</button>
+            <button id="bgmBtnReOn" style="font-size: 12px; margin: 15px;" onclick="bgmBtnReOn()">노래 다시 키기</button>
         </div>
 
 
@@ -582,9 +628,8 @@
 </script>
 
 <!-- 배경음악 자동재생 페이크---------------------S -->
-<iframe id="bgm" width="0" height="0"
-    
-    title="YouTube background video" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen>
+<iframe id="bgm" width="0" height="0" title="YouTube background video" frameborder="0" allow="autoplay; encrypted-media"
+    allowfullscreen>
 </iframe>
 <!-- <iframe id="bgm2" width="0" height="0"
     src="https://www.youtube.com/watch?v=l5995fTszNY?autoplay=1&mute=1&loop=1&playlist=fuz2F8GGQKI&controls=0&rel=0&modestbranding=1&playsinline=1"
@@ -595,27 +640,27 @@
     title="YouTube background video" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen>
 </iframe> -->
 <script>
-      // 1) src 문자열 3개(각자 playlist=영상ID 로 맞춘 embed URL)
-        let bgm1 = "https://www.youtube.com/embed/fuz2F8GGQKI?autoplay=1&mute=1&loop=1&playlist=fuz2F8GGQKI&controls=0&rel=0&modestbranding=1&playsinline=1";
-        let bgm2 = "https://www.youtube.com/embed/l5995fTszNY?autoplay=1&mute=1&loop=1&playlist=l5995fTszNY&controls=0&rel=0&modestbranding=1&playsinline=1";
-        let bgm3 = "https://www.youtube.com/embed/u7fx8leNkaM?autoplay=1&mute=1&loop=1&playlist=u7fx8leNkaM&controls=0&rel=0&modestbranding=1&playsinline=1";
-        let bgm4 = "https://www.youtube.com/embed/eQK5uort8Fk?autoplay=1&mute=1&loop=1&playlist=eQK5uort8Fk&controls=0&rel=0&modestbranding=1&playsinline=1";
-        let bgm5 = "https://www.youtube.com/embed/5ogUKZXBMUQ?autoplay=1&mute=1&loop=1&playlist=5ogUKZXBMUQ&controls=0&rel=0&modestbranding=1&playsinline=1";
-        let bgm6 = "https://www.youtube.com/embed/YfB5xeC6VsE?autoplay=1&mute=1&loop=1&playlist=YfB5xeC6VsE&controls=0&rel=0&modestbranding=1&playsinline=1";
-        let bgm7 = "https://www.youtube.com/embed/BQEWS4UmgHw?autoplay=1&mute=1&loop=1&playlist=BQEWS4UmgHw&controls=0&rel=0&modestbranding=1&playsinline=1";
-        let bgm8 = "https://www.youtube.com/embed/M8psRaOxoeI?autoplay=1&mute=1&loop=1&playlist=M8psRaOxoeI&controls=0&rel=0&modestbranding=1&playsinline=1";
-        // let bgm9 = "https://www.youtube.com/embed/-jidITdmeNM?autoplay=1&mute=1&loop=1&playlist=-jidITdmeNM&controls=0&rel=0&modestbranding=1&playsinline=1";
-        let bgm10 = "https://www.youtube.com/embed/6fkEIAgDLbU?autoplay=1&mute=1&loop=1&playlist=6fkEIAgDLbU&controls=0&rel=0&modestbranding=1&playsinline=1";
-        let bgm11 = "https://www.youtube.com/embed/LiW3yBJ3AF0?autoplay=1&mute=1&loop=1&playlist=LiW3yBJ3AF0&controls=0&rel=0&modestbranding=1&playsinline=1";
+    // 1) src 문자열 3개(각자 playlist=영상ID 로 맞춘 embed URL)
+    let bgm1 = "https://www.youtube.com/embed/fuz2F8GGQKI?autoplay=1&mute=1&loop=1&playlist=fuz2F8GGQKI&controls=0&rel=0&modestbranding=1&playsinline=1";
+    let bgm2 = "https://www.youtube.com/embed/l5995fTszNY?autoplay=1&mute=1&loop=1&playlist=l5995fTszNY&controls=0&rel=0&modestbranding=1&playsinline=1";
+    let bgm3 = "https://www.youtube.com/embed/u7fx8leNkaM?autoplay=1&mute=1&loop=1&playlist=u7fx8leNkaM&controls=0&rel=0&modestbranding=1&playsinline=1";
+    let bgm4 = "https://www.youtube.com/embed/eQK5uort8Fk?autoplay=1&mute=1&loop=1&playlist=eQK5uort8Fk&controls=0&rel=0&modestbranding=1&playsinline=1";
+    let bgm5 = "https://www.youtube.com/embed/5ogUKZXBMUQ?autoplay=1&mute=1&loop=1&playlist=5ogUKZXBMUQ&controls=0&rel=0&modestbranding=1&playsinline=1";
+    let bgm6 = "https://www.youtube.com/embed/YfB5xeC6VsE?autoplay=1&mute=1&loop=1&playlist=YfB5xeC6VsE&controls=0&rel=0&modestbranding=1&playsinline=1";
+    let bgm7 = "https://www.youtube.com/embed/BQEWS4UmgHw?autoplay=1&mute=1&loop=1&playlist=BQEWS4UmgHw&controls=0&rel=0&modestbranding=1&playsinline=1";
+    let bgm8 = "https://www.youtube.com/embed/M8psRaOxoeI?autoplay=1&mute=1&loop=1&playlist=M8psRaOxoeI&controls=0&rel=0&modestbranding=1&playsinline=1";
+    // let bgm9 = "https://www.youtube.com/embed/-jidITdmeNM?autoplay=1&mute=1&loop=1&playlist=-jidITdmeNM&controls=0&rel=0&modestbranding=1&playsinline=1";
+    let bgm10 = "https://www.youtube.com/embed/6fkEIAgDLbU?autoplay=1&mute=1&loop=1&playlist=6fkEIAgDLbU&controls=0&rel=0&modestbranding=1&playsinline=1";
+    let bgm11 = "https://www.youtube.com/embed/LiW3yBJ3AF0?autoplay=1&mute=1&loop=1&playlist=LiW3yBJ3AF0&controls=0&rel=0&modestbranding=1&playsinline=1";
 
 
-        // 2) 랜덤으로 하나 고르기
-        const list = [bgm1, bgm2, bgm3, bgm4, bgm5, bgm6, bgm7, bgm8,      bgm10, bgm11];
-        const pick = list[Math.floor(Math.random() * list.length)];
-        console.log("pick된 bgm은" + pick);
-        // 3) 선택된 것을 iframe에 주입
-        const iframe = document.getElementById('bgm');
-        iframe.src = pick;
+    // 2) 랜덤으로 하나 고르기
+    const list = [bgm1, bgm2, bgm3, bgm4, bgm5, bgm6, bgm7, bgm8, bgm10, bgm11];
+    const pick = list[Math.floor(Math.random() * list.length)];
+    console.log("pick된 bgm은" + pick);
+    // 3) 선택된 것을 iframe에 주입
+    const iframe = document.getElementById('bgm');
+    iframe.src = pick;
 
 
     function bgmTest() {
