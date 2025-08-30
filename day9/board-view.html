@@ -165,7 +165,10 @@
                     data: { boardNo: self.boardNo }, //?뒤에 붙는 그런 파라미터를 여기에 적음
                     success: function (data) {
                         console.log(data);
-                        self.fncntupdate(); //self쓰기 this 안됨
+                        
+                         // 조회수 업데이트 후 정보 다시 불러오기
+                        self.fnBoardInfo();  // fnBoardInfo()로 최신 데이터를 다시 불러오기
+                    
                         alert("조회수+1 수정완료");
                     }
                 });
@@ -179,7 +182,7 @@
             console.log("boardNo ===>", this.boardNo); //내가 보내준 (요청한) 값 출력 가능
 
             this.fnBoardInfo(); //바로 함수 실행
-            // this.fncntupdate(); 여기서하면 뭔가 오락가락보임
+            this.fncntupdate(); //여기서하고 안에서 다시 게시판정보 불려옴 조회수+1 바로 보이게하려고... 
         }
     });
 
