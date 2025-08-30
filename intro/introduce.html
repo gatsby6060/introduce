@@ -662,7 +662,7 @@
 
 <!--로컬컴퓨터 외부연결 가동-----------------------------------------------------S-->
 <script>
-  const API_BASE = 'https://db42aa577071.ngrok-free.app'; // .env에서 주입해도 됨
+  const API_BASE = 'https://f5581a5e9ccf.ngrok-free.app'; // .env에서 주입해도 됨
   async function loadBoard() {
     const res = await fetch(`${API_BASE}/board/list?option=all&keyword=`);
     const { list } = await res.json();
