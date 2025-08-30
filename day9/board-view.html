@@ -100,7 +100,14 @@
             fnBoardInfo: function () {
                 let self = this;
                 $.ajax({
-                    url: "http://localhost:3009/board/view",
+                    // url: "http://localhost:3009/board/view", 로컬용 일단 주석처리
+                    //----------------------추가S
+                    url: "https://f5581a5e9ccf.ngrok-free.app/board/view",
+                    headers: {
+                        // 서버에게 JSON 원해요
+                        "Accept": "application/json"
+                    },
+                    //----------------------추가E
                     dataType: "json",
                     type: "GET",
                     data: { boardNo: self.boardNo },
