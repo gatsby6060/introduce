@@ -128,43 +128,62 @@
                 //     }
                 // });
                 //250830주석처리
+
+                // $.ajax({
+                //     // url: "http://localhost:3009/board/list",
+                //     url: "https://f5581a5e9ccf.ngrok-free.app/board/list",
+                //     type: "GET",
+                //     dataType: "json",
+                //     data: param,
+                //     crossDomain: true,
+                //     timeout: 10000,
+                //     success: function (data) {
+                //         alert('fnBoardList실행성공');
+                //         console.log('success:', data);
+                //         self.list = data?.list ?? [];
+                //     },
+                //     error: function (xhr, status, err) {
+                //         console.error('AJAX 실패:', status, err, xhr?.status, xhr?.responseText);
+                //         // parsererror면 수동으로 JSON 파싱 시도
+                //         if (status === 'parsererror' && xhr?.responseText) {
+                //             try {
+                //                 const data = JSON.parse(xhr.responseText);
+                //                 alert('서버 응답 수동 파싱 성공');
+                //                 self.list = data?.list ?? [];
+                //                 return;
+                //             } catch (e) {
+                //                 console.error('수동 파싱 실패:', e);
+                //             }
+                //         }
+                //         let msg = `AJAX 실패: ${xhr?.status || ''} ${status}`;
+                //         if (xhr?.status === 0) msg += '\n(네트워크/CORS 문제 가능성)';
+                //         else if (xhr?.status === 404) msg += '\n(경로 확인: /board/list)';
+                //         else if (xhr?.status >= 500) msg += '\n(서버 오류)';
+                //         msg += `\n\n응답 일부: ${(xhr?.responseText || '').slice(0, 200)}`;
+                //         alert(msg);
+                //     },
+                //     complete: function () {
+                //         console.log('AJAX complete');
+                //     }
+                // });
                 $.ajax({
                     // url: "http://localhost:3009/board/list",
-                    url: "https://f5581a5e9ccf.ngrok-free.app/board/list",
-                    type: "GET",
+                    url: "https://f5581a5e9ccf.ngrok-free.app/board/list?ngrok-skip-browser-warning=true",
                     dataType: "json",
-                    data: param,
-                    crossDomain: true,
+                    type: "GET",
+                    data: param, // { option, keyword }
                     timeout: 10000,
                     success: function (data) {
                         alert('fnBoardList실행성공');
-                        console.log('success:', data);
+                        console.log(data);
                         self.list = data?.list ?? [];
                     },
                     error: function (xhr, status, err) {
                         console.error('AJAX 실패:', status, err, xhr?.status, xhr?.responseText);
-                        // parsererror면 수동으로 JSON 파싱 시도
-                        if (status === 'parsererror' && xhr?.responseText) {
-                            try {
-                                const data = JSON.parse(xhr.responseText);
-                                alert('서버 응답 수동 파싱 성공');
-                                self.list = data?.list ?? [];
-                                return;
-                            } catch (e) {
-                                console.error('수동 파싱 실패:', e);
-                            }
-                        }
-                        let msg = `AJAX 실패: ${xhr?.status || ''} ${status}`;
-                        if (xhr?.status === 0) msg += '\n(네트워크/CORS 문제 가능성)';
-                        else if (xhr?.status === 404) msg += '\n(경로 확인: /board/list)';
-                        else if (xhr?.status >= 500) msg += '\n(서버 오류)';
-                        msg += `\n\n응답 일부: ${(xhr?.responseText || '').slice(0, 200)}`;
-                        alert(msg);
-                    },
-                    complete: function () {
-                        console.log('AJAX complete');
+                        alert(`AJAX 실패: ${xhr?.status || ''} ${status}\n${(xhr?.responseText || '').slice(0, 200)}`);
                     }
                 });
+
 
             },
             fnView: function (boardNo) {
