@@ -372,7 +372,10 @@
                 <a href="https://www.naver.com" target="_blank">네이버 이동 클릭</a>
                 <br>
                 <br>
-                <a href="https://www.naver.com" target="_blank">게시판 이동 클릭</a>
+                <!-- <a href="../day9/board-list.html" target="_blank">게시판 이동 클릭</a> -->
+                 <a href="/introduce/day9/board-list.html" target="_blank">게시판 이동 클릭</a>
+                <!-- <a href="https://gatsby6060.github.io/introduce/day9/board-list.html" target="_blank">게시판 이동 클릭</a> -->
+                
             </div>
 
         </div>
@@ -487,6 +490,7 @@
                 <div>주소 : 13486 인천광역시 연수구 판교로 227번길 23, 5층</div>
                 <div>COPYRIGHT © 2025 JGH SHIELDUS. ALL RIGHTS RESERVED.</div>
             </div> -->
+            <!--방문자수 누적, 새로고침 누적-->
             <div style="font:15px sans-serif; float: right;">
                 <img src="https://visitor-badge.laobi.icu/badge?page_id=gatsby6060.introduce.intro" alt="visits"
                     style="vertical-align:middle;height:18px; margin-right: 5px;" id="visitorBadge" onclick="egg()">
@@ -657,17 +661,3 @@
     }
 </script>
 <!-- 배경음악 자동재생 페이크---------------------E -->
-
-
-
-<!--로컬컴퓨터 외부연결 가동-----------------------------------------------------S-->
-<script>
-  const API_BASE = 'https://f5581a5e9ccf.ngrok-free.app'; // .env에서 주입해도 됨
-  async function loadBoard() {
-    const res = await fetch(`${API_BASE}/board/list?option=all&keyword=`);
-    const { list } = await res.json();
-    // list를 테이블에 렌더링
-  }
-  document.addEventListener('DOMContentLoaded', loadBoard);
-</script>
-<!--로컬컴퓨터 외부연결 가동-----------------------------------------------------S-->
