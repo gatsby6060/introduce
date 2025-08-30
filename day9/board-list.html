@@ -19,23 +19,28 @@
             padding: 5px 20px;
             /*안쪽 여백 상하5px 좌우20px*/
         }
-        th{
+
+        th {
             background-color: bisque;
         }
-        #search{
-            margin : 10px 0px;
+
+        #search {
+            margin: 10px 0px;
         }
-        #search select{
+
+        #search select {
             width: 100px;
-            height : 30px;
+            height: 30px;
             text-align: center;
         }
-        #search input{
+
+        #search input {
             height: 25px;
             width: 200px;
             margin-left: 5px;
         }
-        #search button{
+
+        #search button {
             height: 30px;
             margin-left: 5px;
         }
@@ -50,7 +55,7 @@
     <div id="app">
         <!--테이블의 형태로-->
         <!-- 번호, 제목, 작성자, 조회수, 작성일(YYYY-MM-DD)-->
-        <div id = "search">
+        <div id="search">
             <select v-model="option"><!--셀렉트한 밸류의 값이 option에 들어감-->
                 <option value="all">:: 전체 ::</option>
                 <option value="title">:: 제목 ::</option>
@@ -94,8 +99,8 @@
                 // 변수 
                 // (key : value)
                 list: [], //아래쪽에서 self.list = data.list;해서 데이터를 담아준다
-                keyword : "",
-                option : "all" //최초에 all'전체'클릭한것처럼 보이게 함 
+                keyword: "",
+                option: "all" //최초에 all'전체'클릭한것처럼 보이게 함 
             };
         },
         methods: {
@@ -104,28 +109,69 @@
                 // alert('fnBoardList실행');
                 let self = this; //이걸 해야 위에 지역?내? list변수 사용가능
                 let param = {
-                    option : self.option, // 서버로 보내줄 파라미터... option이라는 이름으로 보냄
-                    keyword : self.keyword //keyword
+                    option: self.option, // 서버로 보내줄 파라미터... option이라는 이름으로 보냄
+                    keyword: self.keyword //keyword
                 };
                 alert('fnBoardList실행직전');
+
+                //250830주석처리
+                // $.ajax({
+                //     // url: "http://localhost:3009/board/list", //일단주석처리
+                //     url: "https://f5581a5e9ccf.ngrok-free.app/board/list",
+                //     dataType: "json",
+                //     type: "GET",
+                //     data: param, //{} 이 부분을 위 param으로 대체
+                //     success: function (data) {
+                //         alert('fnBoardList실행성공');
+                //         console.log(data);
+                //         self.list = data.list;
+                //     }
+                // });
+                //250830주석처리
                 $.ajax({
-                    // url: "http://localhost:3009/board/list", //일단주석처리
+                    // url: "http://localhost:3009/board/list",
                     url: "https://f5581a5e9ccf.ngrok-free.app/board/list",
-                    dataType: "json",
                     type: "GET",
-                    data: param, //{} 이 부분을 위 param으로 대체
+                    dataType: "json",
+                    data: param,
+                    crossDomain: true,
+                    timeout: 10000,
                     success: function (data) {
                         alert('fnBoardList실행성공');
-                        console.log(data);
-                        self.list = data.list;
+                        console.log('success:', data);
+                        self.list = data?.list ?? [];
+                    },
+                    error: function (xhr, status, err) {
+                        console.error('AJAX 실패:', status, err, xhr?.status, xhr?.responseText);
+                        // parsererror면 수동으로 JSON 파싱 시도
+                        if (status === 'parsererror' && xhr?.responseText) {
+                            try {
+                                const data = JSON.parse(xhr.responseText);
+                                alert('서버 응답 수동 파싱 성공');
+                                self.list = data?.list ?? [];
+                                return;
+                            } catch (e) {
+                                console.error('수동 파싱 실패:', e);
+                            }
+                        }
+                        let msg = `AJAX 실패: ${xhr?.status || ''} ${status}`;
+                        if (xhr?.status === 0) msg += '\n(네트워크/CORS 문제 가능성)';
+                        else if (xhr?.status === 404) msg += '\n(경로 확인: /board/list)';
+                        else if (xhr?.status >= 500) msg += '\n(서버 오류)';
+                        msg += `\n\n응답 일부: ${(xhr?.responseText || '').slice(0, 200)}`;
+                        alert(msg);
+                    },
+                    complete: function () {
+                        console.log('AJAX complete');
                     }
                 });
+
             },
             fnView: function (boardNo) {
                 location.href = `board-view.html?boardNo=${boardNo}`;
             },
-            fnAdd : function(boardNo){
-                location.href = `board-add.html`;                
+            fnAdd: function (boardNo) {
+                location.href = `board-add.html`;
             }
         },
         mounted() {
