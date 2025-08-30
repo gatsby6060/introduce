@@ -165,7 +165,7 @@
                     data: { boardNo: self.boardNo }, //?뒤에 붙는 그런 파라미터를 여기에 적음
                     success: function (data) {
                         console.log(data);
-                        this.fncntupdate();
+                        self.fncntupdate(); //self쓰기 this 안됨
                         alert("조회수+1 수정완료");
                     }
                 });
