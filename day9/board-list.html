@@ -108,7 +108,8 @@
                     keyword : self.keyword //keyword
                 };
                 $.ajax({
-                    url: "http://localhost:3009/board/list",
+                    // url: "http://localhost:3009/board/list", //일단주석처리
+                    url: "https://db42aa577071.ngrok-free.app/board/list",
                     dataType: "json",
                     type: "GET",
                     data: param, //{} 이 부분을 위 param으로 대체
