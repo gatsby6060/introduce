@@ -167,20 +167,31 @@
                 //     }
                 // });
                 $.ajax({
-                    // url: "http://localhost:3009/board/list",
-                    url: "https://f5581a5e9ccf.ngrok-free.app/board/list?ngrok-skip-browser-warning=true",
-                    dataType: "json",
+                    url: "https://f5581a5e9ccf.ngrok-free.app/board/list",
                     type: "GET",
-                    data: param, // { option, keyword }
+                    dataType: "json",
+                    data: param,              // { option, keyword }
                     timeout: 10000,
+                    headers: {
+                        // ngrok 경고(인터스티셜) 우회
+                        "ngrok-skip-browser-warning": "true",
+                        // 서버에게 JSON 원해요
+                        "Accept": "application/json"
+                    },
                     success: function (data) {
-                        alert('fnBoardList실행성공');
-                        console.log(data);
+                        console.log("fnBoardList 성공:", data);
                         self.list = data?.list ?? [];
                     },
                     error: function (xhr, status, err) {
-                        console.error('AJAX 실패:', status, err, xhr?.status, xhr?.responseText);
-                        alert(`AJAX 실패: ${xhr?.status || ''} ${status}\n${(xhr?.responseText || '').slice(0, 200)}`);
+                        console.error("AJAX 실패:", status, err, xhr?.status);
+                        // 진단용으로 응답 앞부분만 보기
+                        const preview = (xhr?.responseText || "").slice(0, 300);
+                        alert(`AJAX 실패: ${xhr?.status || ""} ${status}\n미리보기:\n${preview}`);
+
+                        // 만약 여전히 parsererror면 HTML이 온 것 → ngrok/라우팅/서버 헤더 점검
+                        if (status === "parsererror" && xhr?.responseText?.startsWith("<!DOCTYPE")) {
+                            console.warn("JSON 대신 HTML 수신 (ngrok 경고 또는 서버 Content-Type 문제 가능)");
+                        }
                     }
                 });
 
