@@ -116,7 +116,7 @@
 
                 //250830주석처리
                 // $.ajax({
-                //     // url: "http://localhost:3009/board/list", //일단주석처리
+                //     // url: "http://localhost:3009/board/list", //로컬에서 쓰던 것 일단주석처리
                 //     url: "https://f5581a5e9ccf.ngrok-free.app/board/list",
                 //     dataType: "json",
                 //     type: "GET",
@@ -129,49 +129,14 @@
                 // });
                 //250830주석처리
 
-                // $.ajax({
-                //     // url: "http://localhost:3009/board/list",
-                //     url: "https://f5581a5e9ccf.ngrok-free.app/board/list",
-                //     type: "GET",
-                //     dataType: "json",
-                //     data: param,
-                //     crossDomain: true,
-                //     timeout: 10000,
-                //     success: function (data) {
-                //         alert('fnBoardList실행성공');
-                //         console.log('success:', data);
-                //         self.list = data?.list ?? [];
-                //     },
-                //     error: function (xhr, status, err) {
-                //         console.error('AJAX 실패:', status, err, xhr?.status, xhr?.responseText);
-                //         // parsererror면 수동으로 JSON 파싱 시도
-                //         if (status === 'parsererror' && xhr?.responseText) {
-                //             try {
-                //                 const data = JSON.parse(xhr.responseText);
-                //                 alert('서버 응답 수동 파싱 성공');
-                //                 self.list = data?.list ?? [];
-                //                 return;
-                //             } catch (e) {
-                //                 console.error('수동 파싱 실패:', e);
-                //             }
-                //         }
-                //         let msg = `AJAX 실패: ${xhr?.status || ''} ${status}`;
-                //         if (xhr?.status === 0) msg += '\n(네트워크/CORS 문제 가능성)';
-                //         else if (xhr?.status === 404) msg += '\n(경로 확인: /board/list)';
-                //         else if (xhr?.status >= 500) msg += '\n(서버 오류)';
-                //         msg += `\n\n응답 일부: ${(xhr?.responseText || '').slice(0, 200)}`;
-                //         alert(msg);
-                //     },
-                //     complete: function () {
-                //         console.log('AJAX complete');
-                //     }
-                // });
+            
                 $.ajax({
+                    // url: "http://localhost:3009/board/list", //로컬에서 쓰던 것 일단주석처리
                     url: "https://f5581a5e9ccf.ngrok-free.app/board/list",
                     type: "GET",
                     dataType: "json",
                     data: param,              // { option, keyword }
-                    timeout: 10000,
+                    // timeout: 10000,
                     headers: {
                         // ngrok 경고(인터스티셜) 우회
                         "ngrok-skip-browser-warning": "true",
@@ -179,20 +144,20 @@
                         "Accept": "application/json"
                     },
                     success: function (data) {
-                        console.log("fnBoardList 성공:", data);
+                        // console.log("fnBoardList 성공:", data);
                         self.list = data?.list ?? [];
                     },
-                    error: function (xhr, status, err) {
-                        console.error("AJAX 실패:", status, err, xhr?.status);
-                        // 진단용으로 응답 앞부분만 보기
-                        const preview = (xhr?.responseText || "").slice(0, 300);
-                        alert(`AJAX 실패: ${xhr?.status || ""} ${status}\n미리보기:\n${preview}`);
+                    // error: function (xhr, status, err) {
+                    //     console.error("AJAX 실패:", status, err, xhr?.status);
+                    //     // 진단용으로 응답 앞부분만 보기
+                    //     const preview = (xhr?.responseText || "").slice(0, 300);
+                    //     alert(`AJAX 실패: ${xhr?.status || ""} ${status}\n미리보기:\n${preview}`);
 
-                        // 만약 여전히 parsererror면 HTML이 온 것 → ngrok/라우팅/서버 헤더 점검
-                        if (status === "parsererror" && xhr?.responseText?.startsWith("<!DOCTYPE")) {
-                            console.warn("JSON 대신 HTML 수신 (ngrok 경고 또는 서버 Content-Type 문제 가능)");
-                        }
-                    }
+                    //     // 만약 여전히 parsererror면 HTML이 온 것 → ngrok/라우팅/서버 헤더 점검
+                    //     if (status === "parsererror" && xhr?.responseText?.startsWith("<!DOCTYPE")) {
+                    //         console.warn("JSON 대신 HTML 수신 (ngrok 경고 또는 서버 Content-Type 문제 가능)");
+                    //     }
+                    // }
                 });
 
 
