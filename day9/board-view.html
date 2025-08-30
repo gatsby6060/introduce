@@ -165,7 +165,8 @@
                     data: { boardNo: self.boardNo }, //?뒤에 붙는 그런 파라미터를 여기에 적음
                     success: function (data) {
                         console.log(data);
-                        alert("조회수+1완료 (약간 불안정상황 추후 보완예정)");
+                        this.fncntupdate();
+                        alert("조회수+1 수정완료");
                     }
                 });
             }
@@ -178,7 +179,7 @@
             console.log("boardNo ===>", this.boardNo); //내가 보내준 (요청한) 값 출력 가능
 
             this.fnBoardInfo(); //바로 함수 실행
-            this.fncntupdate();
+            // this.fncntupdate(); 여기서하면 뭔가 오락가락보임
         }
     });
 
