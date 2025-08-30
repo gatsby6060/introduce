@@ -104,6 +104,8 @@
                     //----------------------추가S
                     url: "https://f5581a5e9ccf.ngrok-free.app/board/view",
                     headers: {
+                        // ngrok 경고(인터스티셜) 우회.... 경고가 있든말든?....
+                        "ngrok-skip-browser-warning": "true",
                         // 서버에게 JSON 원해요
                         "Accept": "application/json"
                     },
