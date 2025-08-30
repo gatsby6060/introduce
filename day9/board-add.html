@@ -117,7 +117,14 @@
                     kind: self.selectItem
                 };
                 $.ajax({
-                    url: "http://localhost:3009/board/insert",
+                    // url: "http://localhost:3009/board/insert",
+                    url: "https://f5581a5e9ccf.ngrok-free.app/board/insert",
+                    headers: {
+                        // ngrok 경고(인터스티셜) 우회.... 경고가 있든말든?....
+                        "ngrok-skip-browser-warning": "true",
+                        // 서버에게 말한 나는 JSON이 좋아요
+                        "Accept": "application/json"
+                    },
                     dataType: "json",
                     type: "GET",
                     data: param,

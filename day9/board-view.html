@@ -125,7 +125,14 @@
                     return;
                 }
                 $.ajax({
-                    url: `http://localhost:3009/board/delete`,
+                    // url: `http://localhost:3009/board/delete`, //
+                    url: "https://f5581a5e9ccf.ngrok-free.app/board/delete",
+                    headers: {
+                        // ngrok 경고(인터스티셜) 우회.... 경고가 있든말든?....
+                        "ngrok-skip-browser-warning": "true",
+                        // 서버에게 말한 나는 JSON이 좋아요
+                        "Accept": "application/json"
+                    },
                     dataType: "json",
                     type: "GET",
                     data: { boardNo: self.boardNo }, //?뒤에 붙는 그런 파라미터를 여기에 적음
@@ -139,13 +146,20 @@
             fnList: function () {
                 location.href = "board-list.html";
             },
-            fnEdit: function(){
-                location.href=`board-edit.html?boardNo=${this.boardNo}`;
+            fnEdit: function () {
+                location.href = `board-edit.html?boardNo=${this.boardNo}`;
             },
             fncntupdate: function () {
                 let self = this;
                 $.ajax({
-                    url: `http://localhost:3009/cntupdate`,
+                    // url: `http://localhost:3009/cntupdate`,
+                    url: "https://f5581a5e9ccf.ngrok-free.app/cntupdate",
+                    headers: {
+                        // ngrok 경고(인터스티셜) 우회.... 경고가 있든말든?....
+                        "ngrok-skip-browser-warning": "true",
+                        // 서버에게 말한 나는 JSON이 좋아요
+                        "Accept": "application/json"
+                    },
                     dataType: "json",
                     type: "GET",
                     data: { boardNo: self.boardNo }, //?뒤에 붙는 그런 파라미터를 여기에 적음
