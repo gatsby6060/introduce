@@ -62,7 +62,8 @@
                             alert(data[0].NAME + "님 환영합니다.");
                             
                             sessionStorage.setItem("sessionId",data[0].USERID);
-                            sessionStorage.setItem("sessionStatus",data[0].STATUS);
+                            sessionStorage.setItem("sessionStatus",data[0].STATUS); //관리자권한부분같음
+                            // sessionStorage.setItem()
 
                             location.href = "board-list.html" //리스트로 이동
                         }else{
