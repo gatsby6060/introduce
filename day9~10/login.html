@@ -1,25 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"
+        integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
 </head>
+
 <body>
     <div id="app">
         <div id="container">
-            <div><label>아이디 :  <input type="text" v-model="userId"></label> </div>
-            <div></div><label>비밀번호 :  <input type="password" v-model="pwd"></label> </div>
-            <div>
-                <button @click="fnLogin">로그인</button>
-                <button>회원가입</button>
-            </div>
+            <div><label>아이디 : <input type="text" v-model="userId"></label> </div>
+            <div></div><label>비밀번호 : <input type="password" v-model="pwd"></label>
         </div>
-        
+        <div>
+            <button @click="fnLogin">로그인</button>
+            <button>회원가입</button>
+        </div>
+    </div>
+
     </div>
 </body>
+
 </html>
 
 <script>
@@ -27,8 +32,8 @@
         data() {
             return {
                 // 변수 - (key : value)
-                userId : "",
-                pwd : ""
+                userId: "",
+                pwd: ""
             };
         },
         methods: {
@@ -36,16 +41,33 @@
             fnLogin: function () {
                 let self = this;
                 let param = {
-                    userId : self.userId,
-                    pwd : self.pwd
+                    userId: self.userId,
+                    pwd: self.pwd
                 };
                 $.ajax({
-                    url: "http://localhost:3009/login",
+                    // url: "http://localhost:3009/login",
+                    url: "https://f5581a5e9ccf.ngrok-free.app/login",
+                    headers: {
+                        // ngrok 경고(인터스티셜) 우회
+                        "ngrok-skip-browser-warning": "true",
+                        // 서버에게 JSON 원해요
+                        "Accept": "application/json"
+                    },
                     dataType: "json",
                     type: "GET",
                     data: param,
                     success: function (data) {
                         console.log(data);
+                        if(data.length > 0){
+                            alert(data[0].NAME + "님 환영합니다.");
+                            
+                            sessionStorage.setItem("sessionId",data[0].USERID);
+                            sessionStorage.setItem("sessionStatus",data[0].STATUS);
+
+                            location.href = "board-list.html" //리스트로 이동
+                        }else{
+                            alert("아이디/비밀번호를 확인해주세요.");
+                        }
                     }
                 });
             }
