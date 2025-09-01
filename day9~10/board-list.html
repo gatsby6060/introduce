@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table,
+        tr,
+        th,
+        td {
+            border: 2px solid black;
+            /*2px 크기 검은색 선(solid)로 (dotted은 점선) */
+            border-collapse: collapse;
+            /*겹치는 선 하나로*/
+            text-align: center;
+            /*가운데 정렬*/
+            padding: 5px 20px;
+            /*안쪽 여백 상하5px 좌우20px*/
+        }
+
+        th {
+            background-color: bisque;
+        }
+
+        #search {
+            margin: 10px 0px;
+        }
+
+        #search select {
+            width: 100px;
+            height: 30px;
+            text-align: center;
+        }
+
+        #search input {
+            height: 25px;
+            width: 200px;
+            margin-left: 5px;
+        }
+
+        #search button {
+            height: 30px;
+            margin-left: 5px;
+        }
+    </style>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.js"
+        integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <!--테이블의 형태로-->
+        <!-- 번호, 제목, 작성자, 조회수, 작성일(YYYY-MM-DD)-->
+        <div id="search">
+            <select v-model="option"><!--셀렉트한 밸류의 값이 option에 들어감-->
+                <option value="all">:: 전체 ::</option>
+                <option value="title">:: 제목 ::</option>
+                <option value="user">:: 작성자 ::</option>
+            </select>
+            <input v-model="keyword" @keyup.enter="fnBoardList" placeholder="검색어를 입력해주세요">
+            <button @click="fnBoardList">검색</button>
+        </div>
+        <table>
+            <tr>
+                <th>번호</th>
+                <th>제목</th>
+                <th>작성자</th>
+                <th>조회수</th>
+                <th>작성일</th>
+            </tr>
+
+            <tr v-for="item in list"><!--첫행에는 item 자체가 담겨있을것-->
+                <td>{{item.BOARDNO}}</td><!--이후에 각각의 .키값으로 가져옴-->
+                <td>
+                    <a href="#" @click="fnView(item.BOARDNO)">{{item.TITLE}}</a>
+                </td>
+                <td>{{item.USERID}}</td>
+                <td>{{item.CNT}}</td>
+                <td>{{item.CTIME}} </td>
+                <!-- <td><button @click="fnRemove(item.STU_NO)">삭제</button></td>요래야 함수 동작함 -->
+                <!-- <td><button @click="fnEditMode(item)">수정</button></td> -->
+            </tr>
+
+        </table>
+        <button @click="fnAdd">글쓰기</button>
+    </div>
+</body>
+
+</html>
+
+<script>
+    const app = Vue.createApp({
+        data() {
+            return {
+                // 변수 
+                // (key : value)
+                list: [], //아래쪽에서 self.list = data.list;해서 데이터를 담아준다
+                keyword: "",
+                option: "all" //최초에 all'전체'클릭한것처럼 보이게 함 
+            };
+        },
+        methods: {
+            // 함수(메소드) - (key : function())
+            fnBoardList: function () {
+                // alert('fnBoardList실행');
+                let self = this; //이걸 해야 위에 지역?내? list변수 사용가능
+                let param = {
+                    option: self.option, // 서버로 보내줄 파라미터... option이라는 이름으로 보냄
+                    keyword: self.keyword //keyword
+                };
+                // alert('fnBoardList실행직전');
+
+                //250830주석처리
+                // $.ajax({
+                //     // url: "http://localhost:3009/board/list", //로컬에서 쓰던 것 일단주석처리
+                //     url: "https://f5581a5e9ccf.ngrok-free.app/board/list",
+                //     dataType: "json",
+                //     type: "GET",
+                //     data: param, //{} 이 부분을 위 param으로 대체
+                //     success: function (data) {
+                //         alert('fnBoardList실행성공');
+                //         console.log(data);
+                //         self.list = data.list;
+                //     }
+                // });
+                //250830주석처리
+
+            
+                $.ajax({
+                    // url: "http://localhost:3009/board/list", //로컬에서 쓰던 것 일단주석처리
+                    url: "https://f5581a5e9ccf.ngrok-free.app/board/list",
+                    type: "GET",
+                    dataType: "json",
+                    data: param,              // { option, keyword }
+                    // timeout: 10000,
+                    headers: {
+                        // ngrok 경고(인터스티셜) 우회
+                        "ngrok-skip-browser-warning": "true",
+                        // 서버에게 JSON 원해요
+                        "Accept": "application/json"
+                    },
+                    success: function (data) {
+                        // console.log("fnBoardList 성공:", data);
+                        self.list = data?.list ?? [];
+                    },
+                    // error: function (xhr, status, err) {
+                    //     console.error("AJAX 실패:", status, err, xhr?.status);
+                    //     // 진단용으로 응답 앞부분만 보기
+                    //     const preview = (xhr?.responseText || "").slice(0, 300);
+                    //     alert(`AJAX 실패: ${xhr?.status || ""} ${status}\n미리보기:\n${preview}`);
+
+                    //     // 만약 여전히 parsererror면 HTML이 온 것 → ngrok/라우팅/서버 헤더 점검
+                    //     if (status === "parsererror" && xhr?.responseText?.startsWith("<!DOCTYPE")) {
+                    //         console.warn("JSON 대신 HTML 수신 (ngrok 경고 또는 서버 Content-Type 문제 가능)");
+                    //     }
+                    // }
+                });
+
+
+            },
+            fnView: function (boardNo) {
+                location.href = `board-view.html?boardNo=${boardNo}`;
+            },
+            fnAdd: function (boardNo) {
+                location.href = `board-add.html`;
+            }
+        },
+        mounted() {
+            // 페이지 보일때 처음 시작할 때 실행되는 부분
+            let self = this;
+            self.fnBoardList();
+        }
+    });
+
+    app.mount('#app');
+</script>

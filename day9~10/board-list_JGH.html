@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table,
+        tr,
+        td,
+        th {
+            border: 2px solid black;
+            /*2px 크기 검은색 선(solid)로 (dotted은 점선) */
+            border-collapse: collapse;
+            /*겹치는 선 하나로*/
+            text-align: center;
+            /*가운데 정렬*/
+            padding: 5px 20px;
+            /*안쪽 여백 상하5px 좌우20px*/
+        }
+    </style>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.js"
+        integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <!--테이블의 형태로-->
+        <!-- 번호, 제목, 작성자, 조회수, 작성일(YYYY-MM-DD)-->
+        <table>
+            <tr>
+                <th>번호</th>
+                <th>제목</th>
+                <th>작성자</th>
+                <th>조회수</th>
+                <th>작성일</th>
+            </tr>
+            <!-- <tr>
+                <td>test1</td>
+                <td>test2</td>
+                <td>test3</td>
+                <td>test4</td>
+                <td>test5</td>
+            </tr>
+            <tr>
+                <td>test6</td>
+                <td>test7</td>
+                <td>test8</td>
+                <td>test9</td>
+                <td>test10</td>
+            </tr> -->
+            <tr v-for="item in list"><!--첫행에는 item 자체가 담겨있을것-->
+                <td>{{item.BOARDNO}}</td><!--이후에 각각의 .키값으로 가져옴-->
+                <td>{{item.TITLE}}</td>
+                <td>{{item.USERID}}</td>
+                <td>{{item.CNT}}</td>
+                <td> {{item.CDATETIME}} </td>
+                <!-- <td><button @click="fnRemove(item.STU_NO)">삭제</button></td>요래야 함수 동작함 -->
+                <!-- <td><button @click="fnEditMode(item)">수정</button></td> -->
+            </tr>
+
+        </table>
+    </div>
+</body>
+
+</html>
+
+<script>
+    const app = Vue.createApp({
+        data() {
+            return {
+                // 변수 - (key : value)
+                list: [], //아래쪽에서 self.list = data.list;해서 데이터를 담아준다
+            };
+        },
+        methods: {
+            // 함수(메소드) - (key : function())
+            fnBoardList: function () {
+                let self = this;
+                $.ajax({
+                    url: "http://localhost:3009/board/list",
+                    dataType: "json",
+                    type: "GET",
+                    data: {},
+                    success: function (data) {
+                        console.log("나~니~?");
+                        console.log(data);
+                        self.list = data.list;
+                    }
+                });
+            }
+        },
+        mounted() {
+            // 처음 시작할 때 실행되는 부분
+            let self = this;
+            self.fnBoardList();
+        }
+    });
+
+    app.mount('#app');
+</script>
