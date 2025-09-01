@@ -185,7 +185,9 @@
                 status: "", // 사용자가 관리자인지 아닌지 확인 아래서 사용할꺼임
                 userId: "",
                 selectItem: "", //라디오 버튼으로 선택한 input의 value가 들어간다.
-                option2 : "" //order by 용으로 사용하려함
+                option2 : "all"  //내가 위에서 all을 정렬이라고 값을 정해줫음
+                //위처럼 해야 맨처음 all라고 하면 정렬이란 글자가 보임
+                //order by 용으로 사용하려함 !!!변수 시작은 여기임!!!!!!여기가 시작임
             };
         },
 
@@ -322,18 +324,18 @@
                 console.log("param.option2는 " + param.option2); 
                 
                 $.ajax({
-                    url: "http://localhost:3009/board/listorderby", //로컬에서 쓰던 것 일단주석처리
-                    // url: "https://f5581a5e9ccf.ngrok-free.app/board/listorderby",
+                    // url: "http://localhost:3009/board/listorderby", //로컬에서 쓰던 것 일단주석처리
+                    url: "https://f5581a5e9ccf.ngrok-free.app/board/listorderby",
                     type: "GET",
                     dataType: "json",
                     data: param,              
                    
-                    // headers: {
-                    //     // ngrok 경고(인터스티셜) 우회
-                    //     "ngrok-skip-browser-warning": "true",
-                    //     // 서버에게 JSON 원해요
-                    //     "Accept": "application/json"
-                    // },
+                    headers: {
+                        // ngrok 경고(인터스티셜) 우회
+                        "ngrok-skip-browser-warning": "true",
+                        // 서버에게 JSON 원해요
+                        "Accept": "application/json"
+                    },
                     success: function (data) {
                         // console.log("fnBoardList 성공:", data);
                                                 console.log(data);
