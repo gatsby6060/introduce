@@ -49,6 +49,49 @@
             height: 30px;
             margin-left: 5px;
         }
+
+
+
+        /* 드롭박스관련------------------------------------------S */
+        .main-menu {
+            background-color: green;
+            color: white;
+            padding: 3px;
+            width: 150px;
+            height: 30px;
+            box-sizing: border-box;
+            /*총크기 width 150 유지*/
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .sub-menu {
+            background-color: beige;
+            width: 150px;
+            box-shadow: 2px 2px 2px beige;
+            display: none;
+        }
+
+        .sub-menu a {
+            display: block;
+            padding: 5px;
+            cursor: pointer;
+            /* 마우스를 위로 올리면 손모양으로 바뀜(클릭할 수 있는 것처럼)*/
+        }
+
+        .top-menu:hover .sub-menu {
+            display: block;
+        }
+
+        .sub-menu a:hover {
+            background-color: bisque;
+        }
+
+        .top-menu {
+            display: inline-block;
+        }
+
+        /* 드롭박스관련------------------------------------------E */
     </style>
 
     <script src="https://code.jquery.com/jquery-3.7.1.js"
@@ -62,7 +105,7 @@
         <!-- 번호, 제목, 작성자, 조회수, 작성일(YYYY-MM-DD)-->
         <div id="container">
             <div><button @click="fnLogout">로그아웃</button></div>
-            <div id="search">
+            <div id="search" style="float: left;">
                 <select v-model="option"><!--셀렉트한 밸류의 값이 option에 들어감-->
                     <option value="all">:: 전체 ::</option>
                     <option value="title">:: 제목 ::</option>
@@ -70,7 +113,27 @@
                 </select>
                 <input v-model="keyword" @keyup.enter="fnBoardList" placeholder="검색어를 입력해주세요">
                 <button @click="fnBoardList">검색</button>
+                <!-- <div class="top-menu" style="float: right;">
+                    <div class="main-menu" style="text-align: center;">
+                        정렬
+                    </div>
+                    <div class="sub-menu">
+                        <a>작성일 최신순 정렬</a>
+                        <a>작성일 오래된순 정렬</a>
+                        <a>조회수순 정렬</a>
+                    </div>
+                </div>-->
+            </div> 
+            <div id = "orderBylist" style="float: right;">
+                <select v-model="option2" ><!--셀렉트한 밸류의 값이 option에 들어감-->
+                    <option value="all">:: 정렬 ::</option>
+                    <option value="CDATETIME DESC">:: 작성일 최신순 정렬 ::</option>
+                    <option value="CDATETIME ASC">:: 작성일 오래된순 정렬 ::</option>
+                    <option value="CNT DESC">:: 조회수순 정렬 ::</option>
+                </select>
+                <button @click="fnBoardListOrderby">정렬</button>
             </div>
+          
             <table>
                 <tr>
                     <th>선택</th>
@@ -121,7 +184,8 @@
                 option: "all", //최초에 all'전체'클릭한것처럼 보이게 함 
                 status: "", // 사용자가 관리자인지 아닌지 확인 아래서 사용할꺼임
                 userId: "",
-                selectItem: "" //라디오 버튼으로 선택한 input의 value가 들어간다.
+                selectItem: "", //라디오 버튼으로 선택한 input의 value가 들어간다.
+                option2 : "" //order by 용으로 사용하려함
             };
         },
 
@@ -167,7 +231,9 @@
                     },
                     success: function (data) {
                         // console.log("fnBoardList 성공:", data);
-                        self.list = data?.list ?? [];
+                        // self.list = data?.list ?? [];
+                        console.log(data);
+                        self.list = data.list;
                     },
                     // error: function (xhr, status, err) {
                     //     console.error("AJAX 실패:", status, err, xhr?.status);
@@ -244,6 +310,41 @@
                     }
                 });
             },
+
+            fnBoardListOrderby: function () {
+                // alert('fnBoardList실행');
+                let self = this; //이걸 해야 위에 지역?내? list변수 사용가능
+                let param = {
+                    option2: self.option2, // 서버로 보내줄 파라미터... option2이라는 이름으로 보냄
+                    // keyword: self.keyword //keyword
+                };
+                console.log("self.option2는 " + self.option2); 
+                console.log("param.option2는 " + param.option2); 
+                
+                $.ajax({
+                    url: "http://localhost:3009/board/listorderby", //로컬에서 쓰던 것 일단주석처리
+                    // url: "https://f5581a5e9ccf.ngrok-free.app/board/listorderby",
+                    type: "GET",
+                    dataType: "json",
+                    data: param,              
+                   
+                    // headers: {
+                    //     // ngrok 경고(인터스티셜) 우회
+                    //     "ngrok-skip-browser-warning": "true",
+                    //     // 서버에게 JSON 원해요
+                    //     "Accept": "application/json"
+                    // },
+                    success: function (data) {
+                        // console.log("fnBoardList 성공:", data);
+                                                console.log(data);
+                        self.list = data.list;
+                    },
+
+                });
+
+
+            },
+
         },
 
         mounted() {
