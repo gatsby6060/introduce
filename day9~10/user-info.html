@@ -1,11 +1,113 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"
+        integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <style>
+        table,
+        tr,
+        td,
+        th {
+            border: 1px solid black;
+            text-align: center;
+            padding: 5px 20px;
+            border-collapse: collapse;
+        }
+
+        th {
+            background-color: beige;
+        }
+
+        td {
+            width: 400px;
+        }
+    </style>
 </head>
+
 <body>
-    <div>여기는 user-info.html입니다~</div>
+    <div id="app">
+        여기는 user-info.html입니다.
+        <div id="">
+            <table>
+                <tr>
+                    <th>아이디</th>
+                    <td>{{info.USERID}}</td>
+                </tr>
+                <tr>
+                    <th>이름</th>
+                    <td>{{info.NAME}}</td>
+                </tr>
+                <tr>
+                    <th>닉네임</th>
+                    <td>{{info.NICKNAME}}</td>
+                </tr>
+                <tr>
+                    <th>권한</th>
+                    <td>
+                        <span v-if="info.STATUS == 'A'">관리자</span>
+                        <span v-else-if="info.STATUS == 'C'">고객</span>
+                        <span v-else-if="info.STATUS == 'S'">판매자</span>
+                        <span v-else>알수 없음</span>
+                    </td>
+                </tr>
+                <tr>
+                    <th>연락처</th>
+                    <td>{{info.PHONE}}</td>
+                </tr>
+            </table>
+        </div>
+
+        <div>
+            <button @click="fnClose">닫기</button>
+        </div>
+
+    </div>
 </body>
+
 </html>
+
+<script>
+    const app = Vue.createApp({
+        data() {
+            return {
+                // 변수 - (key : value)
+                userId: "",
+                info: {}
+            };
+        },
+        methods: {
+            // 함수(메소드) - (key : function())
+            fnUserInfo: function () {
+                let self = this; //이것을 적어줘야 함
+                $.ajax({
+                    url: "http://localhost:3009/user/info",
+                    dataType: "json",
+                    type: "GET",
+                    data: { userId: self.userId },
+                    success: function (data) {
+                        // console.log(data);
+                        self.info = data[0];
+                        console.log(self.info);
+                    }
+                });
+            },
+            fnClose: function(){
+                window.close();
+            }
+        },
+        mounted() {
+            // 처음 시작할 때 실행되는 부분
+            const queryParams = new URLSearchParams(window.location.search);
+            this.userId = queryParams.get('userId') || ''; //get('boardNo')는 내가 보낸, 요청한 파라미터 이름
+
+            this.fnUserInfo(); //이페이지가 뜨자마자 실행.
+        }
+    });
+
+    app.mount('#app');
+</script>

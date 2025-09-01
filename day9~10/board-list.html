@@ -69,6 +69,7 @@
         </div>
         <table>
             <tr>
+                <th>선택</th>
                 <th>번호</th>
                 <th>제목</th>
                 <th>작성자</th>
@@ -77,13 +78,16 @@
             </tr>
 
             <tr v-for="item in list"><!--첫행에는 item 자체가 담겨있을것-->
+                <td><input type="radio" name="board" :value="item.BOARDNO" v-model="selectItem"></td>
+                <!-- 무엇이 선택됬는지 알려고 :value필요함-->
                 <td>{{item.BOARDNO}}</td><!--이후에 각각의 .키값으로 가져옴-->
                 <td>
                     <a href="#" @click="fnView(item.BOARDNO)">{{item.TITLE}}</a>
                 </td>
                 <td>
-                    <span v-if="status == 'A'"><a href="javascript:;" @click="fnUserInfo(item.USERID)">{{item.USERID}}</a></span>
-                    <span v-else>{{item.USERID}}  </span>
+                    <span v-if="status == 'A'"><a href="javascript:;"
+                            @click="fnUserInfo(item.USERID)">{{item.USERID}}</a></span>
+                    <span v-else>{{item.USERID}} </span>
                 </td>
                 <td>{{item.CNT}}</td>
                 <td>{{item.CTIME}} </td>
@@ -92,7 +96,10 @@
             </tr>
 
         </table>
-        <button @click="fnAdd">글쓰기</button>
+        <div class="btn">
+            <button @click="fnAdd">글쓰기</button>
+            <button @click="fnRemove">삭제</button>
+        </div>
     </div>
 </body>
 
@@ -108,7 +115,8 @@
                 keyword: "",
                 option: "all", //최초에 all'전체'클릭한것처럼 보이게 함 
                 status: "", // 사용자가 관리자인지 아닌지 확인 아래서 사용할꺼임
-                userId : ""
+                userId: "",
+                selectItem: "" //라디오 버튼으로 선택한 input의 value가 들어간다.
             };
         },
 
@@ -179,11 +187,11 @@
             fnAdd: function (boardNo) {
                 let self = this; //로그인하면 값이 잇음 안하면 없음
                 console.log(self.status); //로그인하면 값이 있음,   로그인 안하면 없음
-                if(self.status != null){
+                if (self.status != null) {
                     location.href = "board-add.html"
-                }else{
+                } else {
                     alert("로그인 후 이용해주세요");
-                    location.href="login.html";
+                    location.href = "login.html";
                 }
                 // location.href = `board-add.html`;
             },
@@ -195,15 +203,19 @@
             },
             fnUserInfo: function (userId) {
                 //팝업창띄우기
-                window.open(`user-info.html?userId=${userId}`, "user",  "width=500, height=500");
-                                //주소                      // 팝업의ID        //
-                                //팝업에 아이디가 잇으면 1만번 나옴
+                window.open(`user-info.html?userId=${userId}`, "user", "width=500, height=500");
+                //주소                      // 팝업의ID        //
+                //팝업에 아이디가 잇으면 1만번 나옴
 
 
                 // let self = this;
                 // console.log(self.userId);
                 //location.href = `user-info.html?userId=${userId}`;
             },
+            fnRemove: function () {
+                let self = this;
+                console.log(self.selectItem); //이 값을 서버 쪽에 보낸다. 그걸 기준으로 서버에서 삭제하게....
+            }
         },
 
         mounted() {
