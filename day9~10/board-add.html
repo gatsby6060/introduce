@@ -71,7 +71,10 @@
 
                 <tr>
                     <th>제목</td>
-                    <td><input type="text" v-model="title"></td>
+                    <td style="text-align: left;">
+                        <!-- <input type="text" v-model="title" disabled> -->
+                        {{userId}}
+                    </td>
                 </tr>
 
                 <tr>
@@ -101,9 +104,10 @@
             return {
                 // 변수 - (key : value)    html상의 v-model=""에 있는 값은 여기에 적는다!
                 title: "",
-                userId: "",
+                userId: "", //세션아이디에 이거 넣을것임
                 contents: "",
-                selectItem: 1
+                selectItem: 1,
+                // sId : "" //세션 아이디를 이 sId 이름으로..
             };
         },
         methods: {
@@ -135,7 +139,7 @@
 
         }, //methods------------------------끝부분
         mounted() {// 처음 시작할 때 실행되는 부분
-
+            this.userId = sessionStorage.getItem("sessionId");
         }
     });
 

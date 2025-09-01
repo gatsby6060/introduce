@@ -98,7 +98,7 @@
                 // list: [], // 일단 있으면 좋을것 같음
                 info: {},
                 sessionId: "",  //페이지에 들어오자마자(mounted()) 바로 여기에 세션의 정보를 넣고 싶어요(id를... )
-                sessionStatus : ""
+                sessionStatus : ""  //이 이름으로 아래에서 사용예정
             };
         },
         methods: {
@@ -191,7 +191,7 @@
             //세션정보 꺼냄 꺼내자 마자 위에 선언한 변수 sessionId에 넣어버림 세션아이디의 값하고 info유저의 값하고 같을때만 버튼 보ㅈ줄꺼
             this.sessionId = sessionStorage.getItem("sessionId"); //set할때 이름이 sessionID이었음 그걸 get으로 꺼냄
 
-            this.sessionStatus = sessionStorage.getItem("sessionStatus"); //로그인 할때 set했는데 그때 이름이  sessionStatus 였음
+            this.sessionStatus = sessionStorage.getItem("sessionStatus"); //로그인 할때 set했는데 그때 이름이  sessionStatus였음
 
 
 
