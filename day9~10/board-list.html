@@ -171,8 +171,9 @@
         },
         mounted() {
             // 페이지 보일때 처음 시작할 때 실행되는 부분
-            let sId = sessionStorage.getItem("sessionID"); //set할때 이름이 sessionID이었음 그걸 get으로 꺼냄
-            console.log("세션 아이디 ====> ", sId)
+            let sId = sessionStorage.getItem("sessionId"); //set할때 이름이 sessionID이었음 그걸 get으로 꺼냄
+            // let sId2 = sessionStorage;
+            console.log("세션 아이디 ====> ", sId);
 
             let self = this;
             self.fnBoardList();

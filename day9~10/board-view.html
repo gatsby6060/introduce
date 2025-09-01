@@ -48,28 +48,26 @@
         <div id="container">
             <div>게시글 상세정보</div>
             <table>
-                <tbody>
-                    <tr>
-                        <th>제목 </th>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <th>작성자 </th>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <th>조회수 </th>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <th>작성일 </th>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <th>내용 </th>
-                        <td id="contents"></td>
-                    </tr>
-                </tbody>
+                <tr>
+                    <th>제목</th>
+                    <td>{{info.TITLE}}</td>
+                </tr>
+                <tr>
+                    <th>작성자</th>
+                    <td>{{info.USERID}}</td>
+                </tr>
+                <tr>
+                    <th>조회수</th>
+                    <td>{{info.CNT}}</td>
+                </tr>
+                <tr>
+                    <th>작성일</th>
+                    <td>{{info.CTIME}}</td>
+                </tr>
+                <tr>
+                    <th>내용</th>
+                    <td id="contents">{{info.CONTENTS}}</td>
+                </tr>
             </table>
             <div>
                 <button>수정</button><!-- 삭제 주소는 /board/delete --><!--삭제후 리스트페이지로...-->
@@ -185,7 +183,7 @@
 
             this.fnBoardInfo(); //바로 함수 실행
             this.fncntupdate(); //여기서하고 안에서 다시 게시판정보 불려옴 조회수+1 바로 보이게하려고... 
-                                // 원인불명 다행이 +2가 되진 않아서 다행...
+            // 원인불명 다행이 +2가 되진 않아서 다행...
         }
     });
 
