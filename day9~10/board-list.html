@@ -220,7 +220,8 @@
 
                 $.ajax({
                     // url: "http://localhost:3009/board/list", //로컬에서 쓰던 것 일단주석처리
-                    url: "https://f5581a5e9ccf.ngrok-free.app/board/list",
+                    // url: "https://f5581a5e9ccf.ngrok-free.app/board/list",
+                    url : api("/board/list"),
                     type: "GET",
                     dataType: "json",
                     data: param,              // { option, keyword }
@@ -292,7 +293,8 @@
                 }
                 $.ajax({
                     // url: `http://localhost:3009/board/delete`, //
-                    url: "https://f5581a5e9ccf.ngrok-free.app/board/delete",
+                    // url: "https://f5581a5e9ccf.ngrok-free.app/board/delete",
+                    url : api("/board/delete"),
                     headers: {
                         // ngrok 경고(인터스티셜) 우회.... 경고가 있든말든?....
                         "ngrok-skip-browser-warning": "true",
@@ -325,7 +327,8 @@
                 
                 $.ajax({
                     // url: "http://localhost:3009/board/listorderby", //로컬에서 쓰던 것 일단주석처리
-                    url: "https://f5581a5e9ccf.ngrok-free.app/board/listorderby",
+                    // url: "https://f5581a5e9ccf.ngrok-free.app/board/listorderby",
+                    url : api("/board/listorderby"),
                     type: "GET",
                     dataType: "json",
                     data: param,              
@@ -367,4 +370,18 @@
     });
 
     app.mount('#app');
+</script>
+
+<script>
+  // ngrok 주소를 한 줄로 관리하려함...
+  const API_BASE = "https://f5581a5e9ccf.ngrok-free.app";
+
+  // 경로만 넣으면 전체 URL을 돌려주는 함수
+  function api(path) {
+    if (path.startsWith("/")) {
+      return API_BASE + path;
+    } else {
+      return API_BASE + "/" + path;
+    }
+  }
 </script>
