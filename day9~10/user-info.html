@@ -88,6 +88,14 @@
                     url: "https://f5581a5e9ccf.ngrok-free.app/user/info",
                     // url: "http://localhost:3009/user/info",
                     // url : api("/user/info"),
+                    //제이슨관련 추가 헤더 필요
+                    headers: {
+                        // ngrok 경고(인터스티셜) 우회
+                        "ngrok-skip-browser-warning": "true",
+                        // 서버에게 JSON 원해요
+                        "Accept": "application/json"
+                    },
+
                     dataType: "json",
                     type: "GET",
                     data: { userId: self.userId },
