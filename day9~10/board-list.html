@@ -220,8 +220,8 @@
 
                 $.ajax({
                     // url: "http://localhost:3009/board/list", //로컬에서 쓰던 것 일단주석처리
-                    // url: "https://f5581a5e9ccf.ngrok-free.app/board/list",
-                    url : api("/board/list"),
+                    url: "https://f5581a5e9ccf.ngrok-free.app/board/list",
+                    // url : api("/board/list"),
                     type: "GET",
                     dataType: "json",
                     data: param,              // { option, keyword }
@@ -293,8 +293,8 @@
                 }
                 $.ajax({
                     // url: `http://localhost:3009/board/delete`, //
-                    // url: "https://f5581a5e9ccf.ngrok-free.app/board/delete",
-                    url : api("/board/delete"),
+                    url: "https://f5581a5e9ccf.ngrok-free.app/board/delete",
+                    // url : api("/board/delete"),
                     headers: {
                         // ngrok 경고(인터스티셜) 우회.... 경고가 있든말든?....
                         "ngrok-skip-browser-warning": "true",
@@ -327,8 +327,8 @@
                 
                 $.ajax({
                     // url: "http://localhost:3009/board/listorderby", //로컬에서 쓰던 것 일단주석처리
-                    // url: "https://f5581a5e9ccf.ngrok-free.app/board/listorderby",
-                    url : api("/board/listorderby"),
+                    url: "https://f5581a5e9ccf.ngrok-free.app/board/listorderby",
+                    // url : api("/board/listorderby"),
                     type: "GET",
                     dataType: "json",
                     data: param,              

@@ -85,8 +85,9 @@
             fnUserInfo: function () {
                 let self = this; //이것을 적어줘야 함
                 $.ajax({
+                    url: "https://f5581a5e9ccf.ngrok-free.app/user/info",
                     // url: "http://localhost:3009/user/info",
-                    url : api("/user/info"),
+                    // url : api("/user/info"),
                     dataType: "json",
                     type: "GET",
                     data: { userId: self.userId },
